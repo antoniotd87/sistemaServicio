@@ -294,7 +294,85 @@ return [
                 ],
             ],
         ],
-        ['header' => 'REPORTES'],
+        ['header' => 'ADMINISTRACION'],
+        [
+            'text' => 'Inscripcion',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Reportes',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
+        [
+            'text' => 'Seguimiento',
+            'icon' => 'fas fa-fw fa-lock',
+            'submenu' => [
+                [
+                    'text' => '  Principal',
+                    'url'  => 'seguimiento/principal'
+                ],
+                [
+                    'text' => '  Inscripcion',
+                    'url'  => 'seguimiento/inscripcion'
+                ],
+                [
+                    'text' => '  Bajas',
+                    'url'  => 'seguimiento/bajas'
+                ],
+                [
+                    'text' => '  Por concluir',
+                    'url'  => 'seguimiento/porConcluir'
+                ],
+                [
+                    'text' => '  Liberacion',
+                    'url'  => 'seguimiento/liberaciones'
+                ],
+            ]
+        ],
+        [
+            'text' => 'Archivos historicos',
+            'icon' => 'fas fa-fw fa-lock',
+            'submenu' => [
+                [
+                    'text' => '  Ver',
+                    'url'  => 'archivos/ver'
+                ],
+                [
+                    'text' => '  Agregar',
+                    'url'  => 'archivos/agregar'
+                ],
+            ]
+        ],
+        [
+            'text' => 'Constancias',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-lock',
+            'url' => 'constancias/generar'
+        ],
+        [
+            'text' => 'Usuarios',
+            'icon' => 'fas fa-fw fa-lock',
+            'submenu' => [
+                [
+                    'text' => '  Ver Usuarios',
+                    'url'  => 'usuarios/ver'
+                ],
+                [
+                    'text' => '  Crear cuentas',
+                    'url'  => 'usuarios/crear'
+                ],
+                [
+                    'text' => '  Recuperacion',
+                    'url'  => 'usuarios/recuperar'
+                ],
+                [
+                    'text' => '  Importar',
+                    'url'  => 'usuarios/importar'
+                ],
+            ]
+        ],
     ],
 
     /*
@@ -333,7 +411,7 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
@@ -368,7 +446,7 @@ return [
             ],
         ],
         'Chartjs' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
@@ -416,4 +494,105 @@ return [
     */
 
     'livewire' => false,
+
+    
+        'name' => 'AdminLTE-Components-DG',
+        'active' => true,
+        'files' => [
+            [
+                'type' => 'css',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/select2/css/select2.min.css',
+            ],
+            [
+                'type' => 'css',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/select2/css/select2-bootstrap4.min.css',
+            ],
+            [
+                'type' => 'js',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/select2/js/select2.min.js',
+            ],
+            [
+                'type' => 'js',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/bs-custom-file-input/bs-custom-file-input.min.js',
+            ],
+            [
+                'type' => 'js',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/moment/moment.min.js',
+            ],
+            [
+                'type' => 'css',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css',
+            ],
+            [
+                'type' => 'js',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js',
+            ],
+            [
+                'type' => 'css',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/summernote/summernote-bs4.css',
+            ],
+            [
+                'type' => 'js',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/summernote/summernote-bs4.min.js',
+            ],
+            [
+                'type' => 'css',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/bs-select/css/bootstrap-select.min.css',
+            ],
+            [
+                'type' => 'js',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/bs-select/js/bootstrap-select.min.js',
+            ],
+            [
+                'type' => 'css',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/bootstrap-tags-input/bootstrap-tagsinput.css',
+            ],
+            [
+                'type' => 'js',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/bootstrap-tags-input/bootstrap-tagsinput.js',
+            ],
+            [
+                'type' => 'js',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/daterangepicker/daterangepicker.js',
+            ],
+            [
+                'type' => 'css',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/daterangepicker/daterangepicker.css',
+            ],
+            [
+                'type' => 'css',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css',
+            ],
+            [
+                'type' => 'js',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js',
+            ],
+            [
+                'type' => 'css',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/bootstrap-slider/css/bootstrap-slider.min.css',
+            ],
+            [
+                'type' => 'js',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/bootstrap-slider/js/bootstrap-slider.min.js',
+            ],
+        ],
 ];
