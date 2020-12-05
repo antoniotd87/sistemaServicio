@@ -231,47 +231,31 @@ return [
     */
 
     'menu' => [
+        ['header' => 'userINSCRIPCIÓN'],
         [
-            'text' => 'Buscar',
-            'search' => false,
-            'topnav' => true,
-        ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        ['header' => 'INSCRIPCIÓN'],
-        [
-            'text'    => 'Sector Publico y Privado',
+            'text'    => 'userSector Publico y Privado',
             'icon'    => 'fas fa-school',
             'submenu' => [
                 [
-                    'text' => 'Solicitud para tramitar SS',
+                    'text' => 'userSolicitud para tramitar SS',
                     'url'=>'solicitudServicio'
                 ],
                 [
-                    'text' => 'Datos del Prestador',
+                    'text' => 'userDatos del Prestador',
                     'url'  => 'datosPrestador'
                 ],
                 [
-                    'text' => 'Registro de Autorizacion',
+                    'text' => 'userRegistro de Autorizacion',
                     'url'  => 'registroAutorizacion'
                 ],
             ],
         ],
         [
-            'text'    => 'Sector Privado',
+            'text'    => 'userSector Privado',
             'icon'    => 'fas fa-industry',
             'submenu' => [
                 [
-                    'text' => 'Anexo Tecnico',
+                    'text' => 'userAnexo Tecnico',
                     'url'  => 'anexoTecnico'
                 ],
                 [
@@ -279,96 +263,96 @@ return [
                     'icon'    => 'fas fa-share',
                     'submenu' => [
                         [
-                            'text' => '  Para 1 Persona',
+                            'text' => 'user  Para 1 Persona',
                             'url'  => 'solicitudPrivado1'
                         ],
                         [
-                            'text' => '  Para 2 Personas',
+                            'text' => 'user  Para 2 Personas',
                             'url'  => 'solicitudPrivado2'
                         ],
                         [
-                            'text' => '  Para 3 o mas Personas',
+                            'text' => 'user  Para 3 o mas Personas',
                             'url'  => 'solicitudPrivado3'
                         ],
                     ]
                 ],
             ],
         ],
-        ['header' => 'ADMINISTRACION'],
+        ['header' => 'admiADMINISTRACION'],
         [
-            'text' => 'Inscripcion',
+            'text' => 'admiInscripcion',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'Reportes',
+            'text' => 'admiReportes',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text' => 'Seguimiento',
+            'text' => 'admiSeguimiento',
             'icon' => 'fas fa-fw fa-lock',
             'submenu' => [
                 [
-                    'text' => '  Principal',
+                    'text' => 'admi  Principal',
                     'url'  => 'seguimiento/principal'
                 ],
                 [
-                    'text' => '  Inscripcion',
+                    'text' => 'admi  Inscripcion',
                     'url'  => 'seguimiento/inscripcion'
                 ],
                 [
-                    'text' => '  Bajas',
+                    'text' => 'admi  Bajas',
                     'url'  => 'seguimiento/bajas'
                 ],
                 [
-                    'text' => '  Por concluir',
+                    'text' => 'admi  Por concluir',
                     'url'  => 'seguimiento/porConcluir'
                 ],
                 [
-                    'text' => '  Liberacion',
+                    'text' => 'admi  Liberacion',
                     'url'  => 'seguimiento/liberaciones'
                 ],
             ]
         ],
         [
-            'text' => 'Archivos historicos',
+            'text' => 'admiArchivos historicos',
             'icon' => 'fas fa-fw fa-lock',
             'submenu' => [
                 [
-                    'text' => '  Ver',
+                    'text' => 'admi  Ver',
                     'url'  => 'archivos/ver'
                 ],
                 [
-                    'text' => '  Agregar',
+                    'text' => 'admi  Agregar',
                     'url'  => 'archivos/agregar'
                 ],
             ]
         ],
         [
-            'text' => 'Constancias',
+            'text' => 'admiConstancias',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
             'url' => 'constancias/generar'
         ],
         [
-            'text' => 'Usuarios',
+            'text' => 'admiUsuarios',
             'icon' => 'fas fa-fw fa-lock',
             'submenu' => [
                 [
-                    'text' => '  Ver Usuarios',
+                    'text' => 'admi  Ver Usuarios',
                     'url'  => 'usuarios/ver'
                 ],
                 [
-                    'text' => '  Crear cuentas',
+                    'text' => 'admi  Crear cuentas',
                     'url'  => 'usuarios/crear'
                 ],
                 [
-                    'text' => '  Recuperacion',
+                    'text' => 'admi  Recuperacion',
                     'url'  => 'usuarios/recuperar'
                 ],
                 [
-                    'text' => '  Importar',
+                    'text' => 'admi  Importar',
                     'url'  => 'usuarios/importar'
                 ],
             ]

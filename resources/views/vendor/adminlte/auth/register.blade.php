@@ -33,6 +33,22 @@
             @endif
         </div>
 
+        {{-- Tipo field --}}
+        <div class="input-group mb-3">
+            <input type="text" name="tipo" class="form-control {{ $errors->has('tipo') ? 'is-invalid' : '' }}"
+                   value="{{ old('tipo') }}" placeholder="Tipo de usuario" autofocus>
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-user {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                </div>
+            </div>
+            @if($errors->has('tipo'))
+                <div class="invalid-feedback">
+                    <strong>{{ $errors->first('tipo') }}</strong>
+                </div>
+            @endif
+        </div>
+
         {{-- Email field --}}
         <div class="input-group mb-3">
             <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
