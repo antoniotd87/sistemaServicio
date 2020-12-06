@@ -11,6 +11,6 @@
 
 @section('content')
     <form action="" class="row text-center" id="solicitudPrivado1">
-        @include('vistas.form-solicitud-privado')
+        @include('vistas.alumno.form-solicitud-privado')
     </form>
 @stop

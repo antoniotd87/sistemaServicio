@@ -259,7 +259,7 @@ return [
                     'url'  => 'anexoTecnico'
                 ],
                 [
-                    'text' => 'Solicitud Sector Privado',
+                    'text' => 'userSolicitud Sector Privado',
                     'icon'    => 'fas fa-share',
                     'submenu' => [
                         [
