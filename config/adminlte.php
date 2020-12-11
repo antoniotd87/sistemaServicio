@@ -230,48 +230,48 @@ return [
     |
     */
 
-    'menu' => [
-        ['header' => 'userINSCRIPCIÓN'],
+    'menu' => [        
+        ['header' => 'admiINSCRIPCIÓN'],
         [
-            'text'    => 'userSector Publico y Privado',
+            'text'    => 'admiSector Publico y Privado',
             'icon'    => 'fas fa-school',
             'submenu' => [
                 [
-                    'text' => 'userSolicitud para tramitar SS',
+                    'text' => 'admiSolicitud para tramitar SS',
                     'url'=>'solicitudServicio'
                 ],
                 [
-                    'text' => 'userDatos del Prestador',
+                    'text' => 'admiDatos del Prestador',
                     'url'  => 'datosPrestador'
                 ],
                 [
-                    'text' => 'userRegistro de Autorizacion',
+                    'text' => 'admiRegistro de Autorizacion',
                     'url'  => 'registroAutorizacion'
                 ],
             ],
         ],
         [
-            'text'    => 'userSector Privado',
+            'text'    => 'admiSector Privado',
             'icon'    => 'fas fa-industry',
             'submenu' => [
                 [
-                    'text' => 'userAnexo Tecnico',
+                    'text' => 'admiAnexo Tecnico',
                     'url'  => 'anexoTecnico'
                 ],
                 [
-                    'text' => 'userSolicitud Sector Privado',
+                    'text' => 'admiSolicitud Sector Privado',
                     'icon'    => 'fas fa-share',
                     'submenu' => [
                         [
-                            'text' => 'user  Para 1 Persona',
+                            'text' => 'admi  Para 1 Persona',
                             'url'  => 'solicitudPrivado1'
                         ],
                         [
-                            'text' => 'user  Para 2 Personas',
+                            'text' => 'admi  Para 2 Personas',
                             'url'  => 'solicitudPrivado2'
                         ],
                         [
-                            'text' => 'user  Para 3 o mas Personas',
+                            'text' => 'admi  Para 3 o mas Personas',
                             'url'  => 'solicitudPrivado3'
                         ],
                     ]
@@ -279,30 +279,21 @@ return [
             ],
         ],
         [
-            'text' => 'userReportes',
+            'text' => 'admiReportes',
             'icon' => 'fas fa-fw fa-lock',
             'submenu' => [
                 [
-                    'text' => 'user  Bimestral',
+                    'text' => 'admi  Bimestral',
                     'url'  => 'bimestral'
                 ],
                 [
-                    'text' => 'user  Trimestral',
+                    'text' => 'admi  Trimestral',
                     'url'  => 'trimestral'
                 ],
             ]
         ],
+
         ['header' => 'admiADMINISTRACION'],
-        [
-            'text' => 'admiInscripcion',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'admiReportes',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
         [
             'text' => 'admiSeguimiento',
             'icon' => 'fas fa-fw fa-lock',
@@ -368,6 +359,79 @@ return [
                 [
                     'text' => 'admi  Importar',
                     'url'  => 'usuarios/importar'
+                ],
+            ]
+        ],
+        ['header' => 'admiAJUSTES DE LA CUENTA'],
+        [
+            'text' => 'admiPerfil',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'admiCambiar Contraseña',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
+        ['header' => 'userINSCRIPCIÓN'],
+        [
+            'text'    => 'userSector Publico y Privado',
+            'icon'    => 'fas fa-school',
+            'submenu' => [
+                [
+                    'text' => 'userSolicitud para tramitar SS',
+                    'url'=>'solicitudServicio'
+                ],
+                [
+                    'text' => 'userDatos del Prestador',
+                    'url'  => 'datosPrestador'
+                ],
+                [
+                    'text' => 'userRegistro de Autorizacion',
+                    'url'  => 'registroAutorizacion'
+                ],
+            ],
+        ],
+        [
+            'text'    => 'userSector Privado',
+            'icon'    => 'fas fa-industry',
+            'submenu' => [
+                [
+                    'text' => 'userAnexo Tecnico',
+                    'url'  => 'anexoTecnico'
+                ],
+                [
+                    'text' => 'userSolicitud Sector Privado',
+                    'icon'    => 'fas fa-share',
+                    'submenu' => [
+                        [
+                            'text' => 'user  Para 1 Persona',
+                            'url'  => 'solicitudPrivado1'
+                        ],
+                        [
+                            'text' => 'user  Para 2 Personas',
+                            'url'  => 'solicitudPrivado2'
+                        ],
+                        [
+                            'text' => 'user  Para 3 o mas Personas',
+                            'url'  => 'solicitudPrivado3'
+                        ],
+                    ]
+                ],
+            ],
+        ],
+
+        [
+            'text' => 'userReportes',
+            'icon' => 'fas fa-fw fa-lock',
+            'submenu' => [
+                [
+                    'text' => 'user  Bimestral',
+                    'url'  => 'bimestral'
+                ],
+                [
+                    'text' => 'user  Trimestral',
+                    'url'  => 'trimestral'
                 ],
             ]
         ],
