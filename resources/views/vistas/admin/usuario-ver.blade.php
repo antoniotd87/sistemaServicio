@@ -16,15 +16,15 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Nombre</th>
-                                <th scope="col">Apellido</th>
+                                <th scope="col">Apellidos</th>
                                 <th scope="col">Telefono</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <th scope="row">1</th>
-                                <td>Antonio</td>
-                                <td>Tomas</td>
+                                <td>Israel</td>
+                                <td>Velazquez Dolores</td>
                                 <td>7121542545</td>
                             </tr>
                         </tbody>

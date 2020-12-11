@@ -278,6 +278,20 @@ return [
                 ],
             ],
         ],
+        [
+            'text' => 'userReportes',
+            'icon' => 'fas fa-fw fa-lock',
+            'submenu' => [
+                [
+                    'text' => 'user  Bimestral',
+                    'url'  => 'bimestral'
+                ],
+                [
+                    'text' => 'user  Trimestral',
+                    'url'  => 'trimestral'
+                ],
+            ]
+        ],
         ['header' => 'admiADMINISTRACION'],
         [
             'text' => 'admiInscripcion',
@@ -287,7 +301,7 @@ return [
         [
             'text' => 'admiReportes',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-fw fa-user',
         ],
         [
             'text' => 'admiSeguimiento',
