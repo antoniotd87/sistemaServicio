@@ -236,17 +236,7 @@ return [
             'search' => false,
             'topnav' => true,
         ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
+        
         ['header' => 'INSCRIPCIÓN'],
         [
             'text'    => 'Sector Publico y Privado',
@@ -294,16 +284,26 @@ return [
                 ],
             ],
         ],
-        ['header' => 'ADMINISTRACION'],
-        [
-            'text' => 'Inscripcion',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
+
         [
             'text' => 'Reportes',
-            'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
+            'submenu' => [
+                [
+                    'text' => '  Bimestral',
+                    'url'  => 'bimestral'
+                ],
+                [
+                    'text' => '  Trimestral',
+                    'url'  => 'trimestral'
+                ],
+            ]
+        ],
+
+        ['header' => 'ADMINISTRACION'],
+        [
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-user',
         ],
         [
             'text' => 'Seguimiento',
@@ -372,6 +372,17 @@ return [
                     'url'  => 'usuarios/importar'
                 ],
             ]
+        ],
+        ['header' => 'account_settings'],
+        [
+            'text' => 'profile',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'change_password',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-lock',
         ],
     ],
 
