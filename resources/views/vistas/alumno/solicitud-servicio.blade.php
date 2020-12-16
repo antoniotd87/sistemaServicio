@@ -19,7 +19,7 @@
             <h5 class="text-uppercase font-weight-bold">P r e s e n t e</h5>
             <p>Por medio de la presente me dirijo a usted de la manera mas atenta para solicitar, se me autorice realizar mi
                 Servicio Social en:</p>
-            <form action="" class="row text-center" id="solicitudDependencia">
+            <form action="{{ url('/estudiantes')}}" method="post" class="row text-center" id="solicitudDependencia">
                 <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 ">
                     <label for="municipioDependencia">Municipio de la dependencia:</label>
                     <input type="text" name="municipioDependencia" id="municipioDependencia"

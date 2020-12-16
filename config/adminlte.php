@@ -65,11 +65,11 @@ return [
     */
 
     'usermenu_enabled' => true,
-    'usermenu_header' => false,
-    'usermenu_header_class' => 'bg-primary',
-    'usermenu_image' => false,
+    'usermenu_header' => true,
+    'usermenu_header_class' => 'bg-lime',
+    'usermenu_image' => true,
     'usermenu_desc' => false,
-    'usermenu_profile_url' => false,
+    'usermenu_profile_url' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -85,8 +85,8 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
-    'layout_fixed_navbar' => null,
+    'layout_fixed_sidebar' => true,
+    'layout_fixed_navbar' => true,
     'layout_fixed_footer' => null,
 
     /*
@@ -121,14 +121,14 @@ return [
     */
 
     'classes_body' => '',
-    'classes_brand' => '',
+    'classes_brand' => 'bg-lime',
     'classes_brand_text' => '',
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'sidebar-light-lime elevation-4',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav' => 'navbar-lime navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -234,7 +234,7 @@ return [
         ['header' => 'admiINSCRIPCIÓN'],
         [
             'text'    => 'admiSector Publico y Privado',
-            'icon'    => 'fas fa-school',
+            'icon'    => 'fas fa-fw fa-file-alt',
             'submenu' => [
                 [
                     'text' => 'admiSolicitud para tramitar SS',
@@ -252,7 +252,7 @@ return [
         ],
         [
             'text'    => 'admiSector Privado',
-            'icon'    => 'fas fa-industry',
+            'icon'    => 'fas fa-fw fa-file-alt',
             'submenu' => [
                 [
                     'text' => 'admiAnexo Tecnico',
@@ -271,6 +271,7 @@ return [
                             'url'  => 'solicitudPrivado2'
                         ],
                         [
+                            'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
                             'text' => 'admi  Para 3 o mas Personas',
                             'url'  => 'solicitudPrivado3'
                         ],
@@ -280,7 +281,7 @@ return [
         ],
         [
             'text' => 'admiReportes',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-fw fa-file-alt',
             'submenu' => [
                 [
                     'text' => 'admi  Bimestral',
@@ -296,7 +297,7 @@ return [
         ['header' => 'admiADMINISTRACION'],
         [
             'text' => 'admiSeguimiento',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-fw fa-chart-area',
             'submenu' => [
                 [
                     'text' => 'admi  Principal',
@@ -322,7 +323,7 @@ return [
         ],
         [
             'text' => 'admiArchivos historicos',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-fw fa-book',
             'submenu' => [
                 [
                     'text' => 'admi  Ver',
@@ -337,12 +338,12 @@ return [
         [
             'text' => 'admiConstancias',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-fw fa-file-contract',
             'url' => 'constancias/generar'
         ],
         [
             'text' => 'admiUsuarios',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-fw fa-users',
             'submenu' => [
                 [
                     'text' => 'admi  Ver Usuarios',
@@ -362,21 +363,10 @@ return [
                 ],
             ]
         ],
-        ['header' => 'admiAJUSTES DE LA CUENTA'],
-        [
-            'text' => 'admiPerfil',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'admiCambiar Contraseña',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
         ['header' => 'userINSCRIPCIÓN'],
         [
             'text'    => 'userSector Publico y Privado',
-            'icon'    => 'fas fa-school',
+            'icon'    => 'fas fa-fw fa-file-alt',
             'submenu' => [
                 [
                     'text' => 'userSolicitud para tramitar SS',
@@ -394,7 +384,7 @@ return [
         ],
         [
             'text'    => 'userSector Privado',
-            'icon'    => 'fas fa-industry',
+            'icon'    => 'fas fa-fw fa-file-alt',
             'submenu' => [
                 [
                     'text' => 'userAnexo Tecnico',
@@ -423,7 +413,7 @@ return [
 
         [
             'text' => 'userReportes',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-fw fa-file-alt',
             'submenu' => [
                 [
                     'text' => 'user  Bimestral',
