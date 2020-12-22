@@ -27,6 +27,12 @@ Route::get('/home', function() {
 })->name('home')->middleware('auth');
 
 
+//Ruta Ver Perfil
+//Route::get('/perfil', function() {return view('vistas.perfil.show-perfil');});
+Route::get('/estudiantes/{estudiante}', [App\Http\Controllers\EstudianteController::class, 'show'])->name('estudiantes.show');
+
+Route::get('/administradors/{administrador}', [App\Http\Controllers\AdministradorController::class, 'show'])->name('administradores.show');
+
 //Rutas Alumnos
 Route::get('/solicitudServicio', function() {return view('vistas.alumno.solicitud-servicio');});
 
@@ -40,7 +46,7 @@ Route::get('/solicitudPrivado1', function() {return view('vistas.alumno.solicitu
 Route::get('/solicitudPrivado2', function() {return view('vistas.alumno.solicitud-sector-privado-2');});
 Route::get('/solicitudPrivado3', function() {return view('vistas.alumno.solicitud-sector-privado-3');});
 
-Route::resource('estudiantes','EstudiantesController');
+//Route::resource('estudiantes','EstudiantesController');
 
 //Rutas Administradores
 Route::get('/seguimiento/principal', function() {return view('vistas.admin.seguimiento-principal');});

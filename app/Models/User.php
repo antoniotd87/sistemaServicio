@@ -45,6 +45,30 @@ class User extends Authenticatable
         return 'https://picsum.photos/300/300';
     }
     public function adminlte_profile_url(){
-        return 'profile/username';
+        return 'perfil';
+    }
+
+    //Evento que se ejecuta cuando un usuario es creado
+    protected static function boot()
+    {
+        parent::boot();
+
+        //Crear estudiante o admin, una vez que se cree el usuario
+        static::created(function ($user)
+        {
+            if($user->attributes['tipo']=='admin'){
+                $user->administrador()->create();
+            }else if($user->attributes['tipo']=='user'){
+                $user->estudiante()->create();
+            }
+        });
+    }
+
+    //Relacion  1:1 entre usuario y administrador
+    public function administrador(){
+        return $this->hasOne(Administrador::class);
+    }
+    public function estudiante(){
+        return $this->hasOne(Estudiante::class);
     }
 }
