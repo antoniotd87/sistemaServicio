@@ -32,15 +32,6 @@
                 </div>
                 <br><br>
                 <div class="d-flex justify-content-center">
-                    <form action="">
-                        <div class="form-group">
-                            <label for="subir">Subir nuevo archivo</label>
-                            <input type="file" name="subir" id="subir" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="Subir" class="btn btn-primary form-control">
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>

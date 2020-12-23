@@ -141,7 +141,7 @@
 
             <div id="4" class="contenido-inscripcion d-none">
                 <h3 class="m-0 text-dark text-center">
-                    Datos del Prestador de Servicio Social (Alumnos)</h3>
+                    Datos de entidad receptora (Empresa o Institución)</h3>
                 <br>
                 <div class="d-flex justify-content-center">
 
@@ -169,7 +169,7 @@
             </div>
             <div id="5" class="contenido-inscripcion d-none">
                 <h3 class="m-0 text-dark text-center">
-                    Datos del Prestador de Servicio Social (Alumnos)</h3>
+                    Estado de los alumnos</h3>
                 <br>
                 <div class="d-flex justify-content-center">
 

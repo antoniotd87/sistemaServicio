@@ -4,7 +4,7 @@
 @section('title', 'Sistema Servicio')
 
 @section('content_header')
-    <h1 class="text-center">Actualizar Informacion mediante un archivo excel</h1>
+    <h1 class="text-center">Subir nuevo archivo historico</h1>
 @stop
 @section('content')
     <div class="card p-2">

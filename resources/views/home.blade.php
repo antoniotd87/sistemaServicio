@@ -15,6 +15,8 @@
                         perferendis ea aliquam eum iure illo quidem odio? Rerum sequi excepturi facilis et esse impedit
                         porro quibusdam, quis cupiditate.</p>
                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Tessfp.jpg">
+                </ul>
+              </li>
                 </div>
             </div>
         </div>
