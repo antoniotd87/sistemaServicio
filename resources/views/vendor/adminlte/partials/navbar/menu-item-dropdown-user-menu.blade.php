@@ -63,10 +63,17 @@
         {{-- User menu footer --}}
         <li class="user-footer">
             @if($profile_url)
-                <a href="{{ $profile_url }}" class="btn btn-default btn-flat">
-                    <i class="fa fa-fw fa-user"></i>
-                    {{ __('adminlte::menu.profile') }}
-                </a>
+                @if (Auth::user()->tipo == 'user')
+                    <a href="{{route('estudiantes.show',['estudiante'=>Auth::user()->estudiante->id])}}" class="btn btn-default btn-flat">
+                        <i class="fa fa-fw fa-user"></i>
+                        {{ __('adminlte::menu.profile') }}
+                    </a>
+                @else
+                    <a href="{{route('administradores.show',['administrador'=>Auth::user()->administrador->id])}}" class="btn btn-default btn-flat">
+                        <i class="fa fa-fw fa-user"></i>
+                        {{ __('adminlte::menu.profile') }}
+                    </a>
+                @endif
             @endif
             <a class="btn btn-default btn-flat float-right @if(!$profile_url) btn-block @endif"
                href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
