@@ -15,6 +15,13 @@ class CreateEntidadReceptorasTable extends Migration
     {
         Schema::create('entidad_receptoras', function (Blueprint $table) {
             $table->id();
+            $table->string('ENR_nombre', 50)->nullable();
+            $table->string('ENR_domicilio', 150)->nullable();
+            $table->string('ENR_municipio', 100)->nullable();
+            $table->string('ENR_telefono', 10)->nullable();
+            $table->string('ENR_correo', 50)->nullable();
+            $table->string('ENR_programaParticipa', 50)->nullable();
+            $table->string('ENR_sector', 50)->nullable();
             $table->timestamps();
         });
     }

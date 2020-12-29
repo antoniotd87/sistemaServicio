@@ -12,4 +12,8 @@ class Estudiante extends Model
     public function usuario(){
         return $this->belongsTo(User::class);
     }
+    //Relacion entre estudiante y seguimiento
+    public function seguimiento(){
+        return $this->hasOne(Seguimiento::class);
+    }
 }

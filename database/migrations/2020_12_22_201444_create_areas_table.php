@@ -15,6 +15,16 @@ class CreateAreasTable extends Migration
     {
         Schema::create('areas', function (Blueprint $table) {
             $table->id();
+            $table->string('ARA_nombre', 45)->nullable();
+            $table->string('ARA_nombreResponsable', 45)->nullable();
+            $table->string('ARA_apellidoPaterno', 45)->nullable();
+            $table->string('ARA_apellidoMaterno', 45)->nullable();
+            $table->string('ARA_cargo', 45)->nullable();
+            $table->string('ARA_correo', 45)->nullable();
+            $table->string('ARA_telefono', 10)->nullable();
+            $table->string('ARA_municipio', 150)->nullable();
+            $table->string('ARA_calle', 150)->nullable();
+            $table->string('ARA_codigoPostal', 5)->nullable();
             $table->timestamps();
         });
     }

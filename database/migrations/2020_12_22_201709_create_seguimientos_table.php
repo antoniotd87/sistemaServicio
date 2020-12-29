@@ -15,6 +15,10 @@ class CreateSeguimientosTable extends Migration
     {
         Schema::create('seguimientos', function (Blueprint $table) {
             $table->id();
+            $table->string('SEG_status', 45)->nullable();
+            $table->foreignId('SEG_EST_id')->references('id')->on('estudiantes');
+            $table->foreignId('SEG_ENT_id')->references('id')->on('entidads');
+            $table->foreignId('SEG_FCH_id')->references('id')->on('fechas');
             $table->timestamps();
         });
     }
@@ -29,3 +33,4 @@ class CreateSeguimientosTable extends Migration
         Schema::dropIfExists('seguimientos');
     }
 }
+

@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Area extends Model
 {
     use HasFactory;
+    //Relacion entre areas y entidades
+    public function entidades(){
+        return $this->hasOne(Entidad::class);
+    }
 }

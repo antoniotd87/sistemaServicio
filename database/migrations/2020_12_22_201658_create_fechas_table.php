@@ -15,6 +15,10 @@ class CreateFechasTable extends Migration
     {
         Schema::create('fechas', function (Blueprint $table) {
             $table->id();
+            $table->date('FCH_fechaEntrega')->nullable();
+            $table->date('FCH_fechaInicio')->nullable();
+            $table->date('FCH_fechaTermino')->nullable();
+            $table->time('FCH_horario')->nullable();
             $table->timestamps();
         });
     }

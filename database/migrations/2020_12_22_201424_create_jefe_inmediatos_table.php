@@ -15,6 +15,10 @@ class CreateJefeInmediatosTable extends Migration
     {
         Schema::create('jefe_inmediatos', function (Blueprint $table) {
             $table->id();
+            $table->string('JEI_nombre', 45)->nullable();
+            $table->string('JEI_apellifoPaterno', 45)->nullable();
+            $table->string('JEI_apellidoMaterno', 45)->nullable();
+            $table->string('JEI_cargo', 45)->nullable();
             $table->timestamps();
         });
     }
