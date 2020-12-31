@@ -60,8 +60,7 @@ class User extends Authenticatable
                 $user->administrador()->create();
             }else if($user->attributes['tipo']=='user'){
                 $user->estudiante()->create();
-                $user->estudiante->seguimiento()->create();
-                
+                $user->estudiante->seguimiento()->create();       
             }
         });
     }

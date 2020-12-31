@@ -38,9 +38,11 @@ Route::get('/perfil/{administrador}', [App\Http\Controllers\AdministradorControl
 Route::get('/solicitudServicio/{estudiante}', [App\Http\Controllers\SolicitudServicioController::class, 'edit'])->name('solicitudServicio.edit');
 Route::put('/solicitudServicio/{estudiante}', [App\Http\Controllers\SolicitudServicioController::class, 'update'])->name('solicitudServicio.update');
 
-Route::get('/datosPrestador', function() {return view('vistas.alumno.datos-prestador');});
 
-Route::get('/registroAutorizacion', function() {return view('vistas.alumno.registro-autorizacion');});
+Route::get('/datosPrestador/{estudiante}', [App\Http\Controllers\DatosPrestadorController::class, 'edit'])->name('datosPrestador.edit');
+
+
+Route::get('/registroAutorizacion/{estudiante}', [App\Http\Controllers\RegistroAutorizacionController::class, 'edit'])->name('registroAutorizacion.edit');
 
 Route::get('/anexoTecnico', function() {return view('vistas.alumno.anexo-tecnico');});
 
