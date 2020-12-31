@@ -35,7 +35,14 @@ class AreaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $area = new Area();
+        //Aqui van mas parametros
+        $area->ARA_nombre = $request->areaServicioSocial;
+
+
+        $area->save();
+        $idA=$area->id;
+        return $idA;
     }
 
     /**

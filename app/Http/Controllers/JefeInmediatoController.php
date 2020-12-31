@@ -24,7 +24,7 @@ class JefeInmediatoController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +35,14 @@ class JefeInmediatoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $jefeInmediato = new JefeInmediato();
+        //Aqui van mas parametros
+        $jefeInmediato->JEI_nombre = $request->jefeInmediato;
+
+
+        $jefeInmediato->save();
+        $idJI=$jefeInmediato->id;
+        return $idJI;
     }
 
     /**

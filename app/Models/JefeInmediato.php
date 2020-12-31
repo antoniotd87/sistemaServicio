@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class JefeInmediato extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'JEI_nombre',
+        'JEI_apellifoPaterno',
+        'JEI_apellidoMaterno',
+        'JEI_cargo'
+    ];
+
     //Relacion entre jefes inmediatos y entidades
     public function entidades(){
         return $this->hasOne(Entidad::class);

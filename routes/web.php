@@ -29,16 +29,20 @@ Route::get('/home', function() {
 
 //Ruta Ver Perfil
 //Route::get('/perfil', function() {return view('vistas.perfil.show-perfil');});
-Route::get('/estudiantes/{estudiante}', [App\Http\Controllers\EstudianteController::class, 'show'])->name('estudiantes.show');
+Route::get('/perfil/{estudiante}', [App\Http\Controllers\EstudianteController::class, 'show'])->name('estudiantes.show');
 
-Route::get('/administradors/{administrador}', [App\Http\Controllers\AdministradorController::class, 'show'])->name('administradores.show');
+Route::get('/perfil/{administrador}', [App\Http\Controllers\AdministradorController::class, 'show'])->name('administradores.show');
 
 //Rutas Alumnos
-Route::get('/solicitudServicio', function() {return view('vistas.alumno.solicitud-servicio');});
 
-Route::get('/datosPrestador', function() {return view('vistas.alumno.datos-prestador');});
+Route::get('/solicitudServicio/{estudiante}', [App\Http\Controllers\SolicitudServicioController::class, 'edit'])->name('solicitudServicio.edit');
+Route::put('/solicitudServicio/{estudiante}', [App\Http\Controllers\SolicitudServicioController::class, 'update'])->name('solicitudServicio.update');
 
-Route::get('/registroAutorizacion', function() {return view('vistas.alumno.registro-autorizacion');});
+
+Route::get('/datosPrestador/{estudiante}', [App\Http\Controllers\DatosPrestadorController::class, 'edit'])->name('datosPrestador.edit');
+
+
+Route::get('/registroAutorizacion/{estudiante}', [App\Http\Controllers\RegistroAutorizacionController::class, 'edit'])->name('registroAutorizacion.edit');
 
 Route::get('/anexoTecnico', function() {return view('vistas.alumno.anexo-tecnico');});
 
