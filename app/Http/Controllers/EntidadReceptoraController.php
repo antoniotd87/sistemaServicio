@@ -35,7 +35,11 @@ class EntidadReceptoraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $entidadReceptora = new EntidadReceptora();
+        $entidadReceptora->ENR_nombre = $request->nombreDependencia;
+        $entidadReceptora->save();
+        $idER=$entidadReceptora->id;
+        return $idER;
     }
 
     /**

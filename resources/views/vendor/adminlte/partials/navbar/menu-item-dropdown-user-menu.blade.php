@@ -64,12 +64,13 @@
         <li class="user-footer">
             @if($profile_url)
                 @if (Auth::user()->tipo == 'user')
-                    <a href="{{route('estudiantes.show',['estudiante'=>Auth::user()->estudiante->id])}}" class="btn btn-default btn-flat">
+                
+                    <a href="{{$profile_url."/".Auth::user()->estudiante->id}}" class="btn btn-default btn-flat">
                         <i class="fa fa-fw fa-user"></i>
                         {{ __('adminlte::menu.profile') }}
                     </a>
                 @else
-                    <a href="{{route('administradores.show',['administrador'=>Auth::user()->administrador->id])}}" class="btn btn-default btn-flat">
+                    <a href="{{$profile_url."/".uth::user()->administrador->id}}" class="btn btn-default btn-flat">
                         <i class="fa fa-fw fa-user"></i>
                         {{ __('adminlte::menu.profile') }}
                     </a>

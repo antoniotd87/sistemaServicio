@@ -33,9 +33,15 @@ class EntidadController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($request)
     {
-        //
+        $entidad = new Entidad();
+        $entidad->entidad_receptora_id = $request['er_id'];
+        $entidad->area_id = $request['a_id'];
+        $entidad->jefe_inmediato_id = $request['ji_id'];
+        $entidad->save();
+        $idE=$entidad->id;
+        return $idE;
     }
 
     /**

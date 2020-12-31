@@ -15,9 +15,9 @@ class CreateEntidadsTable extends Migration
     {
         Schema::create('entidads', function (Blueprint $table) {
             $table->id(); 
-            $table->foreignId('ENT_ENR_id')->references('id')->on('entidad_receptoras');
-            $table->foreignId('ENT_ARA_id')->references('id')->on('areas');
-            $table->foreignId('ENT_JEI_id')->references('id')->on('jefe_inmediatos');
+            $table->foreignId('entidad_receptora_id')->nullable()->references('id')->on('entidad_receptoras');
+            $table->foreignId('area_id')->nullable()->references('id')->on('areas');
+            $table->foreignId('jefe_inmediato_id')->nullable()->references('id')->on('jefe_inmediatos');
             $table->timestamps();
         });
     }
