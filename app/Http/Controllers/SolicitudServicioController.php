@@ -80,49 +80,80 @@ class SolicitudServicioController extends Controller
     {
         $estudiante->update([
             'EST_numeroCuenta' => $request->cuentaAlumno,
-            'EST_registroEstatalSS' => '',
             'EST_apellidoPaterno' => $request->apellidoPaternoAlumno,
             'EST_apellidoMaterno' => $request->apellidoMaternoAlumno,
             'EST_nombre' => $request->nombreAlumno,
             'EST_correo' => $request->correoAlumno,
             'EST_edad' => $request->edadAlumno,
-            'EST_sexo' => '',
             'EST_carrera' => $request->carreraAlumno,
-            'EST_promedio' => '',
             'EST_porcentajeCreditos' => $request->creditosAlumno,
-            'EST_fechaNacimiento' => '',
             'EST_domicilio' => $request->domicilioAlumno,
-            'EST_rfc' => '',
-            'EST_curp' => '',
             'EST_telefono' => $request->telefonoAlumno,
-            'EST_codigoPostal' => ''
         ]);
+        //Instanciamos a los controladores para poder utilizarlos
+        $entidadReceptora = new EntidadReceptoraController();
+        $jefeInmediato = new JefeInmediatoController();
+        $area = new AreaController();
+        $entidad = new EntidadController();
         //Si ya existen relaciones, solo ahy que actualizar las tablas
         if (isset($estudiante->seguimiento->entidades)) {
-            return view('vistas.alumno.solicitud-servicio', compact('estudiante'));
+            //Obtenemos el modelo que queremos editar y llamamos al metodo en el controller
+            $entidadReceptoraModel = $estudiante->seguimiento->entidades->entidad;
+            $entidadReceptora->update($request,$entidadReceptoraModel);
+
+            $jefeInmediatoModel = $estudiante->seguimiento->entidades->jefeInmediatos;
+            $jefeInmediato->update($request,$jefeInmediatoModel);
+
+            $areaModel = $estudiante->seguimiento->entidades->area;
+            $area->update($request,$areaModel);
         } else {
             //Si no hay relaciones, se crean las tablas y se relacionan con el estudiante
-
-            $entidadReceptora = new EntidadReceptoraController();
+            //Se llama al metodo store de el controlador para poder insertar el registro
             $idER = $entidadReceptora->store($request);
 
-            $jefeInmediato = new JefeInmediatoController();
             $idJI = $jefeInmediato->store($request);
 
-            $area = new AreaController();
             $idA = $area->store($request);
-
-            $entidad = new EntidadController();
+            //Se guardan los id's de los registros anteriores en la tabla entidad
+            //tambien desde su controlador
             $datos = [
                 'er_id' => $idER,
                 'ji_id' => $idJI,
                 'a_id' => $idA
             ];
-            $idE = $entidad->store($datos);
 
+            $idE = $entidad->store($datos);
+            //Se actualiza la tabla seguimiento
             $estudiante->seguimiento->update(['entidad_id' => $idE]);
-            return view('vistas.alumno.solicitud-servicio', compact('estudiante'));
         }
+
+        //Creacion del PDF
+        //Probablemente se haga un controler exclusivo para pdf's
+        $pdf = app('dompdf.wrapper');
+        setlocale(LC_TIME, 'es_MX.UTF-8');
+        $fecha = strftime('%d %B %G');
+        $datos = [
+            'fecha' => $fecha,
+            'municipio' => $request->municipioDependencia,
+            'dependencia' => $request->nombreDependencia,
+            'responsable' => $request->responsableDependencia . ' ' . $request->apellidoPaternoResponsable . ' ' . $request->apellidoMaternoResponsable,
+            'cargo' => $request->cargoResponsable,
+            'area' => $request->areaServicioSocial,
+            'jefe' => $request->jefeInmediato . ' ' . $request->cargoJefeInmediato,
+            'estudiante' => $request->nombreAlumno . ' ' . $request->apellidoPaternoAlumno . ' ' . $request->apellidoMaternoAlumno,
+            'carrera' => $request->carreraAlumno . ' ' . $request->grupoAlumno,
+            'cuenta' => $request->cuentaAlumno,
+            'creditos' => $request->creditosAlumno,
+            'correo' => $request->correoAlumno,
+            'telefono' => $request->telefonoAlumno,
+            'domicilio' => $request->domicilioAlumno,
+            'edad' => $request->edadAlumno,
+            'semestre' => $request->semestreAlumno,
+        ];
+        $pdf->loadView('pdf.solicitudservicio', $datos);
+        //Se descarga el pdf y se regresa a la vista
+        return $pdf->download('mi-archivo.pdf');
+        return view('vistas.alumno.solicitud-servicio', compact('estudiante'));
     }
 
     /**
@@ -133,6 +164,5 @@ class SolicitudServicioController extends Controller
      */
     public function destroy($id)
     {
-        //
     }
 }
