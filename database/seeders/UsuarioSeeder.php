@@ -15,7 +15,7 @@ class UsuarioSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+        /* DB::table('users')->insert([
             'name'=> 'Antonio Tomas',
             'email'=>'admin@correo.com',
             'tipo'=>'admin',
@@ -68,6 +68,6 @@ class UsuarioSeeder extends Seeder
             'EST_codigoPostal' => '48578',
             'created_at'=>date('Y-m-d H:i:s'),
             'updated_at'=>date('Y-m-d H:i:s')
-        ]);
-    }
+        ]);*/
+    } 
 }

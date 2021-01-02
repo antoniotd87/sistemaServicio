@@ -57,7 +57,11 @@ class DatosPrestadorController extends Controller
      */
     public function edit(Estudiante $estudiante)
     {
-        return view('vistas.alumno.datos-prestador', compact('estudiante'));
+        if(!isset($estudiante->seguimiento->entidades)){
+            return redirect()->route('solicitudServicio.edit',['estudiante' => $estudiante->id]);
+        }else{
+            return view('vistas.alumno.datos-prestador', compact('estudiante'));
+        }
     }
 
     /**

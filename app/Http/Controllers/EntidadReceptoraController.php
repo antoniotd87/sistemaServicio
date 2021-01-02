@@ -37,6 +37,7 @@ class EntidadReceptoraController extends Controller
     {
         $entidadReceptora = new EntidadReceptora();
         $entidadReceptora->ENR_nombre = $request->nombreDependencia;
+        $entidadReceptora->ENR_municipio = $request->municipioDependencia;
         $entidadReceptora->save();
         $idER=$entidadReceptora->id;
         return $idER;
@@ -73,7 +74,14 @@ class EntidadReceptoraController extends Controller
      */
     public function update(Request $request, EntidadReceptora $entidadReceptora)
     {
-        //
+        $entidadReceptora->ENR_nombre = $request->nombreDependencia;
+        $entidadReceptora->ENR_municipio = $request->municipioDependencia;
+        $entidadReceptora->save();
+    }
+
+    public function Actulizar()
+    {
+        # code...
     }
 
     /**
