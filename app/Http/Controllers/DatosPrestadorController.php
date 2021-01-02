@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Estudiante;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
 
 class DatosPrestadorController extends Controller
 {
@@ -67,9 +67,14 @@ class DatosPrestadorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Estudiante, $estudiante)
     {
-        //
+        $estudiante->update([
+            'EST_fechaNacimiento' => $request->fechaNacimientoAlumno,
+            'EST_rfc' => $request->rfcAlumno,
+            'EST_curp' => $request->curpAlumno,
+            'EST_codigoPostal' => $request->codigoPostalAlumno
+        ]);
     }
 
     /**

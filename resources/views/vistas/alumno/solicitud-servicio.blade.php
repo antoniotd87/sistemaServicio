@@ -104,7 +104,7 @@
                     <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
                         <label for="carreraAlumno">Carrera:</label>
                         <select name="carreraAlumno" id="carreraAlumno" class="form-control text-center">
-                            <option value="">Seleccionar</option>
+                            <option value="{{$estudiante->EST_carrera}}"></option>
                             <option value="1">Contador Publico</option>
                             <option value="2">Informatica</option>
                             <option value="3">Civil</option>
@@ -129,7 +129,7 @@
                     <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
                         <label for="cuentaAlumno">Total de creditos:</label>
                         <input type="number" name="creditosAlumno" id="cuentaAlumno" class="form-control text-center"
-                            placeholder="Porcentaje de creditos, sin el simbolo %">
+                            placeholder="Porcentaje de creditos, sin el simbolo %" value="{{$estudiante->EST_porcentajeCreditos}}">
                     </div>
     
                     <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
@@ -159,7 +159,7 @@
                     <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
                         <label for="carreraAlumno">Semestre:</label>
                         <select name="semestreAlumno" id="semestreAlumno" class="form-control text-center">
-                            <option value="">Seleccionar</option>
+                            <option value="{{$estudiante->EST_semestre}}">Seleccionar</option>
                             <option value="5">5° Semestre</option>
                             <option value="6">6° Semestre</option>
                             <option value="7">7° Semestre</option>

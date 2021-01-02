@@ -14,19 +14,19 @@
                 <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
                     <label for="nombreAlumno">Nombre del Alumno:</label>
                     <input type="text" name="nombreAlumno" id="nombreAlumno" class="form-control text-center"
-                        placeholder="Ingrese su nombre">
+                        placeholder="Ingrese su nombre" value="{{$estudiante->EST_nombre}}">
                 </div>
 
                 <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
                     <label for="apellidoPaternoAlumno">Apellido paterno:</label>
                     <input type="text" name="apellidoPaternoAlumno" id="apellidoPaternoAlumno"
-                        class="form-control text-center" placeholder="Ingrese su apellido paterno">
+                        class="form-control text-center" placeholder="Ingrese su apellido paterno" value="{{$estudiante->EST_apellidoPaterno}}">
                 </div>
 
                 <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
                     <label for="apellidoMaternoAlumno">Apellido materno:</label>
                     <input type="text" name="apellidoMaternoAlumno" id="apellidoMaternoAlumno"
-                        class="form-control text-center" placeholder="Ingrese su apellido materno">
+                        class="form-control text-center" placeholder="Ingrese su apellido materno" value="{{$estudiante->EST_apellidoMaterno}}">
                 </div>
                 <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
                     <label for="fechaNacimientoAlumno">Fecha de nacimiento:</label>
@@ -37,7 +37,7 @@
                 <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
                     <label for="edadAlumno">Edad:</label>
                     <input type="number" name="edadAlumno" id="edadAlumno" class="form-control text-center"
-                        placeholder="Ingrese su edad">
+                        placeholder="Ingrese su edad" value="{{$estudiante->EST_edad}}">
                 </div>
 
                 <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
@@ -61,13 +61,13 @@
                 <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
                     <label for="telefonoAlumno">Telefono:</label>
                     <input type="number" name="telefonoAlumno" id="telefonoAlumno" class="form-control text-center"
-                        placeholder="Ingrese su numero de telefono">
+                        placeholder="Ingrese su numero de telefono" value="{{$estudiante->EST_telefono}}">
                 </div>
 
                 <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
                     <label for="carreraAlumno">Perfil:</label>
                     <select name="carreraAlumno" id="carreraAlumno" class="form-control text-center">
-                        <option value="">Seleccionar</option>
+                        <option value="{{$estudiante->EST_carrera}}">Seleccionar</option>
                         <option value="5">Contador Publico</option>
                         <option value="6">Informatica</option>
                         <option value="7">Civil</option>
@@ -80,7 +80,7 @@
                 <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
                     <label for="carreraAlumno">Semestre:</label>
                     <select name="semestreAlumno" id="semestreAlumno" class="form-control text-center">
-                        <option value="">Seleccionar</option>
+                        <option value="{{$estudiante->EST_semestre}}">Seleccionar</option>
                         <option value="5">5° Semestre</option>
                         <option value="6">6° Semestre</option>
                         <option value="7">7° Semestre</option>
