@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
@@ -12,7 +12,7 @@ use App\Http\Controllers\EntidadReceptoraController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\EntidadController;
 
-class RegistroAutorizacionController extends Controller
+class AnexoTecnicoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -53,7 +53,7 @@ class RegistroAutorizacionController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -67,7 +67,7 @@ class RegistroAutorizacionController extends Controller
         if(!isset($estudiante->seguimiento->entidades)){
             return redirect()->route('solicitudServicio.edit',['estudiante' => $estudiante->id]);
         }else{
-            return view('vistas.alumno.registro-autorizacion', compact('estudiante'));
+            return view('vistas.alumno.anexo-tecnico', compact('estudiante'));
         }
     }
 
@@ -82,8 +82,6 @@ class RegistroAutorizacionController extends Controller
     {
         $estudiante->update([
             'EST_carrera' => $request->carreraAlumno,
-            'EST_sexo' => $request->sexoAlumno,
-            'EST_promedio' => $request->promedioAlumno,
         ]);
          //Instanciamos a los controladores para poder utilizarlos
         $entidadReceptora = new EntidadReceptoraController();
@@ -114,40 +112,7 @@ class RegistroAutorizacionController extends Controller
             //Se actualiza la tabla seguimiento
             $estudiante->seguimiento->update(['entidad_id' => $idE]);
         }
-        //Creacion del PDF
-        //Probablemente se haga un controler exclusivo para pdf's
-        $pdf = app('dompdf.wrapper');
-        setlocale(LC_TIME, 'es_MX.UTF-8');
-        $fecha = strftime('%d %B %G');
-        $datos = [
-            'fechaentrega' => $request->fechaDependencia,
-            'estudiante' => $request->apellidoPaternoAlumno . ' ' . $request->apellidoMaternoAlumno . ' ' . $request->nombreAlumno,
-            'correo' => $request->correoAlumno,
-            'edad' => $request->edadAlumno,
-            'sexo' => $request->sexoAlumno,
-            'carrera' => $request->carreraAlumno,
-            'creditos' => $request->creditosAlumno,
-            'promedio' => $request->promedioAlumno,
-            'dependencia' => $request->nombreDependencia,
-            'tipo' => $request->tipoDependencia,
-            'area' => $request->areaServicioSocial,
-            'domicilio' => $request->calleDependencia . ', ' . $request->domicilioDependencia . ', ' . $request->codigoPostalDependencia . ', ' . $request->municipioDependencia,
-            'municipio' => $request->municipioDependencia,
-            'telefono' => $request->telefonoDependencia,
-            'responsable' => $request->responsableDependencia . ' ' .$request->apellidoPaternoResponsable . ' ' . $request->apellidoMaternoResponsable . ', ' . $request->cargoResponsable,
-            'programa' => $request->programaDependencia,
-            'actividades' => $request->actividadesDependencia,
-            'horario' => $request->horarioDependencia,
-            'entrada' => $request->entradaDependencia,
-            'salida' => $request->salidaDependencia,
-            'inicio' => $request->inicioDependencia,
-            'termino' => $request->terminoDependencia,
-            'horas' => $request->horasDependencia,
-        ];
-        $pdf->loadView('pdf.registroautorizacion', $datos);
-        //Se descarga el pdf y se regresa a la vista
-        return $pdf->download('mi-archivo.pdf');
-        return view('vistas.alumno.registro-autorizacion', compact('estudiante'));
+        return view('vistas.alumno.anexo-tecnico', compact('estudiante'));
     }
 
     /**

@@ -40,15 +40,23 @@ Route::put('/solicitudServicio/{estudiante}', [App\Http\Controllers\SolicitudSer
 
 
 Route::get('/datosPrestador/{estudiante}', [App\Http\Controllers\DatosPrestadorController::class, 'edit'])->name('datosPrestador.edit');
+Route::put('/datosPrestador/{estudiante}', [App\Http\Controllers\DatosPrestadorController::class, 'update'])->name('datosPrestador.update');
 
 
 Route::get('/registroAutorizacion/{estudiante}', [App\Http\Controllers\RegistroAutorizacionController::class, 'edit'])->name('registroAutorizacion.edit');
+Route::put('/registroAutorizacion/{estudiante}', [App\Http\Controllers\RegistroAutorizacionController::class, 'update'])->name('registroAutorizacion.update');
 
-Route::get('/anexoTecnico', function() {return view('vistas.alumno.anexo-tecnico');});
+Route::get('/anexoTecnico/{estudiante}', [App\Http\Controllers\AnexoTecnicoController::class, 'edit'])->name('anexoTecnico.edit');
+Route::put('/anexoTecnico/{estudiante}', [App\Http\Controllers\AnexoTecnicoController::class, 'update'])->name('anexoTecnico.update');
 
-Route::get('/solicitudPrivado1', function() {return view('vistas.alumno.solicitud-sector-privado-1');});
-Route::get('/solicitudPrivado2', function() {return view('vistas.alumno.solicitud-sector-privado-2');});
-Route::get('/solicitudPrivado3', function() {return view('vistas.alumno.solicitud-sector-privado-3');});
+Route::get('/solicitudPrivado1/{estudiante}', [App\Http\Controllers\SolicitudPrivado1Controller::class, 'edit'])->name('solicitudPrivado1.edit');
+Route::put('/solicitudPrivado1/{estudiante}', [App\Http\Controllers\SolicitudPrivado1Controller::class, 'update'])->name('solicitudPrivado1.update');
+
+Route::get('/solicitudPrivado2/{estudiante}', [App\Http\Controllers\SolicitudPrivado2Controller::class, 'edit'])->name('solicitudPrivado2.edit');
+Route::put('/solicitudPrivado2/{estudiante}', [App\Http\Controllers\SolicitudPrivado2Controller::class, 'update'])->name('solicitudPrivado2.update');
+
+Route::get('/solicitudPrivado3/{estudiante}', [App\Http\Controllers\SolicitudPrivado3Controller::class, 'edit'])->name('solicitudPrivado3.edit');
+Route::put('/solicitudPrivado3/{estudiante}', [App\Http\Controllers\SolicitudPrivado3Controller::class, 'update'])->name('solicitudPrivado3.update');
 
 //Route::resource('estudiantes','EstudiantesController');
 

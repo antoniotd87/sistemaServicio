@@ -12,7 +12,7 @@ use App\Http\Controllers\EntidadReceptoraController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\EntidadController;
 
-class RegistroAutorizacionController extends Controller
+class SolicitudPrivado1Controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -53,7 +53,7 @@ class RegistroAutorizacionController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -67,7 +67,7 @@ class RegistroAutorizacionController extends Controller
         if(!isset($estudiante->seguimiento->entidades)){
             return redirect()->route('solicitudServicio.edit',['estudiante' => $estudiante->id]);
         }else{
-            return view('vistas.alumno.registro-autorizacion', compact('estudiante'));
+            return view('vistas.alumno.solicitud-sector-privado-1', compact('estudiante'));
         }
     }
 
@@ -80,12 +80,7 @@ class RegistroAutorizacionController extends Controller
      */
     public function update(Request $request, Estudiante $estudiante)
     {
-        $estudiante->update([
-            'EST_carrera' => $request->carreraAlumno,
-            'EST_sexo' => $request->sexoAlumno,
-            'EST_promedio' => $request->promedioAlumno,
-        ]);
-         //Instanciamos a los controladores para poder utilizarlos
+        //Instanciamos a los controladores para poder utilizarlos
         $entidadReceptora = new EntidadReceptoraController();
         $area = new AreaController();
         $entidad = new EntidadController();
@@ -120,34 +115,24 @@ class RegistroAutorizacionController extends Controller
         setlocale(LC_TIME, 'es_MX.UTF-8');
         $fecha = strftime('%d %B %G');
         $datos = [
-            'fechaentrega' => $request->fechaDependencia,
-            'estudiante' => $request->apellidoPaternoAlumno . ' ' . $request->apellidoMaternoAlumno . ' ' . $request->nombreAlumno,
-            'correo' => $request->correoAlumno,
-            'edad' => $request->edadAlumno,
-            'sexo' => $request->sexoAlumno,
-            'carrera' => $request->carreraAlumno,
-            'creditos' => $request->creditosAlumno,
-            'promedio' => $request->promedioAlumno,
-            'dependencia' => $request->nombreDependencia,
-            'tipo' => $request->tipoDependencia,
-            'area' => $request->areaServicioSocial,
-            'domicilio' => $request->calleDependencia . ', ' . $request->domicilioDependencia . ', ' . $request->codigoPostalDependencia . ', ' . $request->municipioDependencia,
             'municipio' => $request->municipioDependencia,
-            'telefono' => $request->telefonoDependencia,
+            'fecha' => $fecha,
             'responsable' => $request->responsableDependencia . ' ' .$request->apellidoPaternoResponsable . ' ' . $request->apellidoMaternoResponsable . ', ' . $request->cargoResponsable,
-            'programa' => $request->programaDependencia,
-            'actividades' => $request->actividadesDependencia,
-            'horario' => $request->horarioDependencia,
+            'dependencia' => $request->nombreDependencia . ' ' . $request->calleDependencia . ' ' . $request->codigoPostalDependencia . ' ' . $request->municipioDependencia,
+            'estudiante' => $request->nombreAlumno . ' ' . $request->apellidoPaternoAlumno . ' ' . $request->apellidoMaternoAlumno,
+            'carrera' => $request->carreraAlumno,
+            'cuenta' => $request->cuentaAlumno,
+            'area' => $request->areaServicioSocial,
             'entrada' => $request->entradaDependencia,
             'salida' => $request->salidaDependencia,
+            'horario' => $request->horarioDependencia,
             'inicio' => $request->inicioDependencia,
             'termino' => $request->terminoDependencia,
-            'horas' => $request->horasDependencia,
         ];
-        $pdf->loadView('pdf.registroautorizacion', $datos);
+        $pdf->loadView('pdf.solicitudprivado1', $datos);
         //Se descarga el pdf y se regresa a la vista
         return $pdf->download('mi-archivo.pdf');
-        return view('vistas.alumno.registro-autorizacion', compact('estudiante'));
+        return view('vistas.alumno.solicitud-sector-privado-1', compact('estudiante'));
     }
 
     /**

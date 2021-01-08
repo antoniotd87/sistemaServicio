@@ -94,12 +94,12 @@
     <div class="mr-2 mb-3 flex-grow-1">
         <select name="carreraAlumno" id="carreraAlumno" class="form-control text-center">
             <option value="">Seleccionar</option>
-            <option value="5">Contador Publico</option>
-            <option value="6">Informatica</option>
-            <option value="7">Civil</option>
-            <option value="8">Industrias Alimentarias</option>
-            <option value="9">Energias Renovables</option>
-            <option value="10">Quimica</option>
+            <option value="Contador Publico">Contador Publico</option>
+                        <option value="Ingenieria Informatica">Ingenieria Informatica</option>
+                        <option value="Ingenieria Civil">Ingenieria Civil</option>
+                        <option value="Ingenieria en Industrias Alimentarias">Ingenieria en Industrias Alimentarias</option>
+                        <option value="Ingenieria en Energias Renovables">Ingenieria en Energias Renovables</option>
+                        <option value="Ingenieria Quimica">Ingenieria Quimica</option>
         </select>
     </div>
     <div class="mr-2 mb-3">
@@ -148,13 +148,13 @@
     <div class="mr-2 mb-3 flex-grow-1">
         <select name="carreraAlumno" id="carreraAlumno" class="form-control text-center">
             <option value="">Seleccionar.</option>
-            <option value="5">Domingo</option>
-            <option value="6">Lunes</option>
-            <option value="7">Martes</option>
-            <option value="8">Miercoles</option>
-            <option value="9">Jueves</option>
-            <option value="10">Viernes</option>
-            <option value="10">Sabado</option>
+            <option value="Domingo">Domingo</option>
+            <option value="Lunes">Lunes</option>
+            <option value="Martes">Martes</option>
+            <option value="Miercoles">Miercoles</option>
+            <option value="Jueves">Jueves</option>
+            <option value="Viernes">Viernes</option>
+            <option value="Sabado">Sabado</option>
         </select>
     </div>
 
@@ -165,13 +165,13 @@
     <div class="mr-2 mb-3 flex-grow-1">
         <select name="carreraAlumno" id="carreraAlumno" class="form-control text-center">
             <option value="">Seleccionar.</option>
-            <option value="5">Domingo</option>
-            <option value="6">Lunes</option>
-            <option value="7">Martes</option>
-            <option value="8">Miercoles</option>
-            <option value="9">Jueves</option>
-            <option value="10">Viernes</option>
-            <option value="10">Sabado</option>
+            <option value="Domingo">Domingo</option>
+            <option value="Lunes">Lunes</option>
+            <option value="Martes">Martes</option>
+            <option value="Miercoles">Miercoles</option>
+            <option value="Jueves">Jueves</option>
+            <option value="Viernes">Viernes</option>
+            <option value="Sabado">Sabado</option>
         </select>
     </div>
 

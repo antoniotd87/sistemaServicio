@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Estudiante;
-use Illuminate\Http\Request; 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DatosPrestadorController extends Controller
 {
@@ -71,14 +72,38 @@ class DatosPrestadorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Estudiante, $estudiante)
+    public function update(Request $request, Estudiante $estudiante)
     {
         $estudiante->update([
+            'EST_carrera' => $request->carreraAlumno,
             'EST_fechaNacimiento' => $request->fechaNacimientoAlumno,
             'EST_rfc' => $request->rfcAlumno,
             'EST_curp' => $request->curpAlumno,
-            'EST_codigoPostal' => $request->codigoPostalAlumno
+            'EST_semestre' => $request->semestreAlumno,
+            'EST_codigoPostal' => $request->codigoPostalAlumno,
         ]);
+         //Creacion del PDF
+        //Probablemente se haga un controler exclusivo para pdf's
+        $pdf = app('dompdf.wrapper');
+        setlocale(LC_TIME, 'es_MX.UTF-8');
+        $fecha = strftime('%d %B %G');
+        $datos = [
+            'estudiante' => $request->nombreAlumno . ' ' . $request->apellidoPaternoAlumno . ' ' . $request->apellidoMaternoAlumno,
+            'fechanacimiento' => $request->fechaNacimientoAlumno,
+            'edad' => $request->edadAlumno,
+            'domicilio' => $request->domicilioAlumno,
+            'rfc' => $request->rfcAlumno,
+            'curp' => $request->curpAlumno,
+            'telefono' => $request->telefonoAlumno,
+            'codigopostal' => $request->codigoPostalAlumno,
+            'carrera' => $request->carreraAlumno,    
+            'semestre' => $request->semestreAlumno,
+            'fecha' => $fecha,
+        ];
+        $pdf->loadView('pdf.datosprestador', $datos);
+        //Se descarga el pdf y se regresa a la vista
+        return $pdf->download('mi-archivo.pdf');
+        return view('vistas.alumno.datos-prestador', compact('estudiante'));
     }
 
     /**

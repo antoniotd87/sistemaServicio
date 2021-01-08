@@ -15,10 +15,7 @@ class Area extends Model
         'ARA_apellidoMaterno',
         'ARA_cargo',
         'ARA_correo',
-        'ARA_telefono',
-        'ARA_municipio',
-        'ARA_calle',
-        'ARA_codigoPostal'
+        'ARA_telefono'
     ];
 
     //Relacion entre areas y entidades

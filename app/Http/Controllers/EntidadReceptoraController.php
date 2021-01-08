@@ -36,8 +36,24 @@ class EntidadReceptoraController extends Controller
     public function store(Request $request)
     {
         $entidadReceptora = new EntidadReceptora();
+        $entidadReceptora->ENR_fechaEntrega = $request->fechaDependencia;
         $entidadReceptora->ENR_nombre = $request->nombreDependencia;
+        $entidadReceptora->ENR_calle = $request->calleDependencia;
+        $entidadReceptora->ENR_domicilio = $request->domicilioDependencia;
         $entidadReceptora->ENR_municipio = $request->municipioDependencia;
+        $entidadReceptora->ENR_codigoPostal = $request->codigoPostalDependencia;
+        $entidadReceptora->ENR_telefono = $request->telefonoDependencia;
+        $entidadReceptora->ENR_correo = $request->correoDependencia;
+        $entidadReceptora->ENR_tipoEntidad = $request->tipoDependencia;
+        $entidadReceptora->ENR_programaParticipa = $request->programaDependencia;
+        $entidadReceptora->ENR_actividades = $request->actividadesDependencia;
+        $entidadReceptora->ENR_horario = $request->horarioDependencia;
+        $entidadReceptora->ENR_horaEntrada = $request->entradaDependencia;
+        $entidadReceptora->ENR_HoraSalida = $request->salidaDependencia;
+        $entidadReceptora->ENR_fechaInicio = $request->inicioDependencia;
+        $entidadReceptora->ENR_fechaTermino = $request->terminoDependencia;
+        $entidadReceptora->ENR_totalHoras = $request->horasDependencia;
+        $entidadReceptora->ENR_estimulo = $request->estimuloDependencia;
         $entidadReceptora->save();
         $idER=$entidadReceptora->id;
         return $idER;
@@ -74,8 +90,24 @@ class EntidadReceptoraController extends Controller
      */
     public function update(Request $request, EntidadReceptora $entidadReceptora)
     {
+        $entidadReceptora->ENR_fechaEntrega = $request->fechaDependencia;
         $entidadReceptora->ENR_nombre = $request->nombreDependencia;
+        $entidadReceptora->ENR_calle = $request->calleDependencia;
+        $entidadReceptora->ENR_domicilio = $request->domicilioDependencia;
         $entidadReceptora->ENR_municipio = $request->municipioDependencia;
+        $entidadReceptora->ENR_codigoPostal = $request->codigoPostalDependencia;
+        $entidadReceptora->ENR_telefono = $request->telefonoDependencia;
+        $entidadReceptora->ENR_correo = $request->correoDependencia;
+        $entidadReceptora->ENR_tipoEntidad = $request->tipoDependencia;
+        $entidadReceptora->ENR_programaParticipa = $request->programaDependencia;
+        $entidadReceptora->ENR_actividades = $request->actividadesDependencia;
+        $entidadReceptora->ENR_horario = $request->horarioDependencia;
+        $entidadReceptora->ENR_horaEntrada = $request->entradaDependencia;
+        $entidadReceptora->ENR_HoraSalida = $request->salidaDependencia;
+        $entidadReceptora->ENR_fechaInicio = $request->inicioDependencia;
+        $entidadReceptora->ENR_fechaTermino = $request->terminoDependencia;
+        $entidadReceptora->ENR_totalHoras = $request->horasDependencia;
+        $entidadReceptora->ENR_estimulo = $request->estimuloDependencia;
         $entidadReceptora->save();
     }
 
@@ -90,8 +122,5 @@ class EntidadReceptoraController extends Controller
      * @param  \App\Models\EntidadReceptora  $entidadReceptora
      * @return \Illuminate\Http\Response
      */
-    public function destroy(EntidadReceptora $entidadReceptora)
-    {
-        //
-    }
+    
 }

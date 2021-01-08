@@ -87,6 +87,8 @@ class SolicitudServicioController extends Controller
             'EST_edad' => $request->edadAlumno,
             'EST_carrera' => $request->carreraAlumno,
             'EST_porcentajeCreditos' => $request->creditosAlumno,
+            'EST_grupo' => $request->grupoAlumno,
+            'EST_semestre' => $request->semestreAlumno,
             'EST_domicilio' => $request->domicilioAlumno,
             'EST_telefono' => $request->telefonoAlumno,
         ]);
@@ -139,7 +141,7 @@ class SolicitudServicioController extends Controller
             'responsable' => $request->responsableDependencia . ' ' . $request->apellidoPaternoResponsable . ' ' . $request->apellidoMaternoResponsable,
             'cargo' => $request->cargoResponsable,
             'area' => $request->areaServicioSocial,
-            'jefe' => $request->jefeInmediato . ' ' . $request->cargoJefeInmediato,
+            'jefe' => $request->jefeInmediato . ' ' . $request->paternoInmediato . ' ' . $request->maternoInmediato . ' ' . $request->cargoJefeInmediato,
             'estudiante' => $request->nombreAlumno . ' ' . $request->apellidoPaternoAlumno . ' ' . $request->apellidoMaternoAlumno,
             'carrera' => $request->carreraAlumno . ' ' . $request->grupoAlumno,
             'cuenta' => $request->cuentaAlumno,
