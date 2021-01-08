@@ -18,13 +18,12 @@
                             <h5 class="card-tittle m-0">Total de Alumnos</h5>
                         </div>
                         <div class="card-body">
-                            <p class="m-0">200</p>
-                            <x-dg-progress value="100" bg="primary" size="sm" :stripped="true" :vertical="false" />
+                            <p class="m-0">{{ $datos['total'] }}</p>
+                            <x-dg-progress value="{{ $datos['total']/$datos['total']*100 }}" bg="primary" size="sm" :stripped="true" :vertical="false" />
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="w-100"></div>
 
             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 col-xl-3 mt-2">
@@ -33,8 +32,8 @@
                         <h5 class="card-tittle m-0">Inscritos</h5>
                     </div>
                     <div class="card-body">
-                        <p class="m-0">100</p>
-                        <x-dg-progress value="50" bg="info" size="sm" :stripped="true" :vertical="false" />
+                        <p class="m-0">{{$datos['inscritos']}}</p>
+                        <x-dg-progress value="{{ $datos['inscritos']/$datos['total']*100 }}" bg="info" size="sm" :stripped="true" :vertical="false" />
                     </div>
                 </div>
             </div>
@@ -44,8 +43,8 @@
                         <h5 class="card-tittle m-0">Bajas</h5>
                     </div>
                     <div class="card-body">
-                        <p class="m-0">40</p>
-                        <x-dg-progress value="20" bg="danger" size="sm" :stripped="true" :vertical="false" />
+                        <p class="m-0">{{$datos['bajas']}}</p>
+                        <x-dg-progress value="{{ $datos['bajas']/$datos['total']*100 }}" bg="danger" size="sm" :stripped="true" :vertical="false" />
                     </div>
                 </div>
             </div>
@@ -55,8 +54,8 @@
                         <h5 class="card-tittle m-0">Por Concluir</h5>
                     </div>
                     <div class="card-body">
-                        <p class="m-0">25</p>
-                        <x-dg-progress value="12" bg="warning" size="sm" :stripped="true" :vertical="false" />
+                        <p class="m-0">{{$datos['porConcluir']}}</p>
+                        <x-dg-progress value="{{ $datos['porConcluir']/$datos['total']*100 }}" bg="warning" size="sm" :stripped="true" :vertical="false" />
                     </div>
                 </div>
             </div>
@@ -66,12 +65,12 @@
                         <h5 class="card-tittle m-0">Liberacion</h5>
                     </div>
                     <div class="card-body">
-                        <p class="m-0">35</p>
-                        <x-dg-progress value="18" bg="success" size="sm" :stripped="true" :vertical="false" />
+                        <p class="m-0">{{$datos['liberados']}}</p>
+                        <x-dg-progress value="{{ $datos['liberados']/$datos['total']*100 }}" bg="success" size="sm" :stripped="true" :vertical="false" />
                     </div>
                 </div>
             </div>
-
+            
             <div class="w-100"></div>
 
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2">
@@ -118,7 +117,7 @@
                     pointStrokeColor: "rgba(60,141,188,1)",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(60,141,188,1)",
-                    data: [28, 48, 40, 19],
+                    data: [{{$datos['hombres'][0]}}, {{$datos['hombres'][1]}}, {{$datos['hombres'][2]}}, {{$datos['hombres'][3]}}],
                 },
                 {
                     label: "Mujeres",
@@ -129,7 +128,7 @@
                     pointStrokeColor: "#c1c7d1",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: [65, 59, 80, 81],
+                    data: [{{$datos['mujeres'][0]}}, {{$datos['mujeres'][1]}}, {{$datos['mujeres'][2]}}, {{$datos['mujeres'][3]}}],
                 },
             ],
         };

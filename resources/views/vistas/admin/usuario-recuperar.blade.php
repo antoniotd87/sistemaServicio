@@ -11,7 +11,9 @@
         <div class="tab card-body p-0 px-2 pt-2 row">
             <div class="col-12">
                 <div class="d-flex justify-content-center">
-                    <form action="">
+                    <form action="{{ route('usuarios.update') }}">
+                        @csrf
+                        @method('PUT')
                         <div class="form-group">
                             <label for="usuario">Usuario</label>
                             <input type="text" name="usuario" id="subir" class="form-control">

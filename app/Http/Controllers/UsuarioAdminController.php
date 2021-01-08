@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Estudiante;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
-class DatosPrestadorController extends Controller
+class UsuarioAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,9 @@ class DatosPrestadorController extends Controller
      */
     public function index()
     {
-        //
+        $estudiantes = Estudiante::all();
+        //dd($estudiantes);
+        return view('vistas.admin.usuario-ver', compact('estudiantes'));
     }
 
     /**
@@ -24,7 +28,8 @@ class DatosPrestadorController extends Controller
      */
     public function create()
     {
-        //
+        $estudiantes = Estudiante::all();
+        return view('vistas.admin.usuario-crear', compact('estudiantes'));
     }
 
     /**
@@ -35,7 +40,19 @@ class DatosPrestadorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //return $request;
+        $data  = request()->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:5'],
+        ]);
+        User::create([
+            'name' => $data['name'],
+            'tipo' => 'user',
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+        return view('vistas.admin.usuario-crear');
     }
 
     /**
@@ -46,7 +63,6 @@ class DatosPrestadorController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -55,12 +71,9 @@ class DatosPrestadorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Estudiante $estudiante)
+    public function edit($id)
     {
-        if (!isset($estudiante->seguimiento->entidades)) {
-            return redirect()->route('solicitudServicio.edit', ['estudiante' => $estudiante->id]);
-        }
-        return view('vistas.alumno.datos-prestador', compact('estudiante'));
+        //
     }
 
     /**
@@ -70,9 +83,9 @@ class DatosPrestadorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        return $request;
     }
 
     /**
@@ -84,5 +97,13 @@ class DatosPrestadorController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function import()
+    {
+        return view('vistas.admin.usuario-importar');
+    }
+    public function recuperar()
+    {
+        return view('vistas.admin.usuario-recuperar');
     }
 }

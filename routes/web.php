@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\UsuarioAdminController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -15,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('home');
 }); 
 
 Auth::routes();
@@ -40,9 +42,11 @@ Route::put('/solicitudServicio/{estudiante}', [App\Http\Controllers\SolicitudSer
 
 
 Route::get('/datosPrestador/{estudiante}', [App\Http\Controllers\DatosPrestadorController::class, 'edit'])->name('datosPrestador.edit');
+Route::put('/datosPrestador/{estudiante}', [App\Http\Controllers\DatosPrestadorController::class, 'update'])->name('datosPrestador.update');
 
 
 Route::get('/registroAutorizacion/{estudiante}', [App\Http\Controllers\RegistroAutorizacionController::class, 'edit'])->name('registroAutorizacion.edit');
+Route::put('/registroAutorizacion/{estudiante}', [App\Http\Controllers\RegistroAutorizacionController::class, 'edit'])->name('registroAutorizacion.update');
 
 Route::get('/anexoTecnico', function() {return view('vistas.alumno.anexo-tecnico');});
 
@@ -53,15 +57,19 @@ Route::get('/solicitudPrivado3', function() {return view('vistas.alumno.solicitu
 //Route::resource('estudiantes','EstudiantesController');
 
 //Rutas Administradores
-Route::get('/seguimiento/principal', function() {return view('vistas.admin.seguimiento-principal');});
-Route::get('/seguimiento/inscripcion', function() {return view('vistas.admin.seguimiento-inscripcion');});
-Route::get('/seguimiento/bajas', function() {return view('vistas.admin.seguimiento-bajas');});
-Route::get('/seguimiento/liberaciones', function() {return view('vistas.admin.seguimiento-liberaciones');});
-Route::get('/seguimiento/porConcluir', function() {return view('vistas.admin.seguimiento-por-concluir');});
+Route::get('/seguimiento/principal',[App\Http\Controllers\SeguimientoAdminController::class, 'principal']);
+Route::get('/seguimiento/inscripcion',[App\Http\Controllers\SeguimientoAdminController::class, 'inscripcion']);
+Route::get('/seguimiento/bajas',[App\Http\Controllers\SeguimientoAdminController::class, 'baja']);
+Route::get('/seguimiento/liberaciones',[App\Http\Controllers\SeguimientoAdminController::class, 'liberacion']);
+Route::get('/seguimiento/porConcluir',[App\Http\Controllers\SeguimientoAdminController::class, 'porConcluir']);
+
 Route::get('/archivos/ver', function() {return view('vistas.admin.archivos-ver');});
 Route::get('/archivos/agregar', function() {return view('vistas.admin.archivos-agregar');});
 Route::get('/constancias/generar', function() {return view('vistas.admin.constancias-generar');});
-Route::get('/usuarios/importar', function() {return view('vistas.admin.usuario-importar');});
-Route::get('/usuarios/ver', function() {return view('vistas.admin.usuario-ver');});
-Route::get('/usuarios/crear', function() {return view('vistas.admin.usuario-crear');});
-Route::get('/usuarios/recuperar', function() {return view('vistas.admin.usuario-recuperar');});
+
+Route::get('/usuarios/importar',[App\Http\Controllers\UsuarioAdminController::class,'import']);
+Route::get('/usuarios/ver',[App\Http\Controllers\UsuarioAdminController::class,'index']);
+Route::get('/usuarios/crear',[App\Http\Controllers\UsuarioAdminController::class,'create']);
+Route::post('/usuarios/crear',[App\Http\Controllers\UsuarioAdminController::class,'store'])->name('usuarios.store');
+Route::put('/usuarios/recuperar',[App\Http\Controllers\UsuarioAdminController::class,'update'])->name('usuarios.update');
+Route::get('/usuarios/recuperar',[App\Http\Controllers\UsuarioAdminController::class,'recuperar']);

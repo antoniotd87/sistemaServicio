@@ -1,7 +1,7 @@
 @inject('menuItemHelper', \JeroenNoten\LaravelAdminLte\Helpers\MenuItemHelper)
 {{--Aqui se va a validar el tipo de usuario--}}
 @php
-$tipo = Auth::user()->tipo;
+$tipo = isset(Auth::user()->tipo) ? Auth::user()->tipo:'';
 @endphp
 {{--Fin de la validacion del tipo de usuario--}}
 

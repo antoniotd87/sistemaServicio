@@ -14,19 +14,21 @@
                     <table class="table table-responsive w-100" id="table">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">Correo</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Apellidos</th>
                                 <th scope="col">Telefono</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($estudiantes as $estudiante)
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Israel</td>
-                                <td>Velazquez Dolores</td>
-                                <td>7121542545</td>
+                                <td>{{$estudiante->usuario->email}}</td>
+                                <td>{{$estudiante->EST_nombre}}</td>
+                                <td>{{$estudiante->EST_apellidoPaterno}}</td>
+                                <td>{{$estudiante->EST_telefono}}</td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

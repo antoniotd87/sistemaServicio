@@ -39,12 +39,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($users as $user)
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Gerardo</td>
-                                        <td>Lopez</td>
-                                        <td>7121754585</td>
+                                        <th scope="row"></th>
+                                        <td>{{$user->EST_nombre}}</td>
+                                        <td>{{$user->EST_apellidoPaterno}}</td>
+                                        <td>{{$user->EST_telefono}}</td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -72,7 +74,7 @@
                     pointStrokeColor: "rgba(60,141,188,1)",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(60,141,188,1)",
-                    data: [38, 48],
+                    data: [{{$datos[0]}}, {{$datos[2]}}],
                 },
                 {
                     label: "Mujeres",
@@ -83,7 +85,7 @@
                     pointStrokeColor: "#c1c7d1",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: [65, 59],
+                    data: [{{$datos[1]}}, {{$datos[3]}}],
                 },
             ],
         };

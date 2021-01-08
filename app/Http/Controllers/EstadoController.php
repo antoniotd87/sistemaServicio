@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Estudiante;
+use App\Models\Estado;
 use Illuminate\Http\Request;
 
-class DatosPrestadorController extends Controller
+class EstadoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class DatosPrestadorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Estado  $estado
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Estado $estado)
     {
         //
     }
@@ -52,25 +52,22 @@ class DatosPrestadorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Estado  $estado
      * @return \Illuminate\Http\Response
      */
-    public function edit(Estudiante $estudiante)
+    public function edit(Estado $estado)
     {
-        if (!isset($estudiante->seguimiento->entidades)) {
-            return redirect()->route('solicitudServicio.edit', ['estudiante' => $estudiante->id]);
-        }
-        return view('vistas.alumno.datos-prestador', compact('estudiante'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Estado  $estado
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Estado $estado)
     {
         //
     }
@@ -78,10 +75,10 @@ class DatosPrestadorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Estado  $estado
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Estado $estado)
     {
         //
     }

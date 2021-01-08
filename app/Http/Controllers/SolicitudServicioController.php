@@ -95,6 +95,7 @@ class SolicitudServicioController extends Controller
         $jefeInmediato = new JefeInmediatoController();
         $area = new AreaController();
         $entidad = new EntidadController();
+        $estado = new EstadoController();
         //Si ya existen relaciones, solo ahy que actualizar las tablas
         if (isset($estudiante->seguimiento->entidades)) {
             //Obtenemos el modelo que queremos editar y llamamos al metodo en el controller
@@ -125,6 +126,7 @@ class SolicitudServicioController extends Controller
             $idE = $entidad->store($datos);
             //Se actualiza la tabla seguimiento
             $estudiante->seguimiento->update(['entidad_id' => $idE]);
+            //$estudiante->seguimiento->e();
         }
 
         //Creacion del PDF

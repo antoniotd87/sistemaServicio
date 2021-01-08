@@ -119,7 +119,6 @@
                     <table class="table table-responsive w-100" id="tablePSS">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Apellido</th>
                                 <th scope="col">Telefono</th>
@@ -127,13 +126,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Sandra</td>
-                                <td>Flores</td>
-                                <td>7514847584</td>
-                                <td>91.5</td>
-                            </tr>
+                            @foreach ($prestadors as $prestador)
+                                <tr>
+                                    <td>{{ $prestador->usuario->email }}</td>
+                                    <td>{{ $prestador->EST_nombre }}</td>
+                                    <td>{{ $prestador->EST_apellidoPaterno }}</td>
+                                    <td>{{ $prestador->EST_telefono }}</td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -148,21 +148,19 @@
                     <table class="table table-responsive w-100" id="tableER">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Ubicacion</th>
                                 <th scope="col">Encargado</th>
-                                <th scope="col">Hora</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Presidencia Municipal</td>
-                                <td>Atlacomulco</td>
-                                <td>Juan Perez</td>
-                                <td>10:00 PM</td>
-                            </tr>
+                            @foreach ($institucions as $institucion)
+                                <tr>
+                                    <td>{{ $institucion->ENR_nombre }}</td>
+                                    <td>{{ $institucion->ENR_municipio }}</td>
+                                    <td>{{ $institucion->entidad->area->ARA_nombre }}</td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -176,7 +174,6 @@
                     <table class="table table-responsive w-100" id="tableESS">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Apellido</th>
                                 <th scope="col">Inicio</th>
@@ -184,19 +181,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Jonh Jhonson</td>
-                                <td>Lopez</td>
-                                <td>10-08-2020</td>
-                                <td>Liberado</td>
-                            </tr>
+                            @foreach ($prestadors as $prestador)
+                                <tr>
+                                    <td>{{ $prestador->EST_nombre }}</td>
+                                    <td>{{ $prestador->EST_apellidoPaterno }}</td>
+                                    <td>{{ $prestador->created_at }}</td>
+                                    <td>{{ $prestador->seguimiento->estado->STA_estado }}</td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-
     </div>
 @stop
 @section('js')
@@ -240,7 +237,7 @@
                 'Privado',
             ],
             datasets: [{
-                data: [91, 109],
+                data: [{{$datos['publicoM']+$datos['publicoH']}},{{$datos['privadoM']+$datos['privadoH']}}],
                 backgroundColor: ['rgba(60,141,188)', 'rgba(210, 214, 222)'],
             }]
         }
@@ -263,7 +260,7 @@
                 'Mujer',
             ],
             datasets: [{
-                data: [151, 49],
+                data: [{{$datos['publicoM']+$datos['privadoM']}},{{$datos['publicoH']+$datos['privadoH']}}],
                 backgroundColor: ['rgba(60,141,188)', 'rgba(210, 214, 222)'],
             }]
         }
@@ -288,7 +285,14 @@
                     pointStrokeColor: "rgba(60,141,188,1)",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(60,141,188,1)",
-                    data: [28, 48, 40, 19, 15, 57],
+                    data: [
+                        {{$datos['iiH']}}, 
+                        {{$datos['icH']}}, 
+                        {{$datos['iqH']}}, 
+                        {{$datos['iiaH']}}, 
+                        {{$datos['ierH']}},
+                        {{$datos['cpH']}}
+                    ],
                 },
                 {
                     label: "Mujeres",
@@ -299,7 +303,14 @@
                     pointStrokeColor: "#c1c7d1",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: [65, 59, 80, 81, 12, 15],
+                    data: [
+                        {{$datos['iiM']}}, 
+                        {{$datos['icM']}}, 
+                        {{$datos['iqM']}}, 
+                        {{$datos['iiaM']}}, 
+                        {{$datos['ierM']}},
+                        {{$datos['cpM']}}
+                    ],
                 },
             ],
         };
@@ -356,7 +367,7 @@
                     pointStrokeColor: "rgba(60,141,188,1)",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(60,141,188,1)",
-                    data: [38, 48],
+                    data: [{{$datos['publicoH']}}, {{$datos['privadoH']}}],
                 },
                 {
                     label: "Mujeres",
@@ -367,7 +378,7 @@
                     pointStrokeColor: "#c1c7d1",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: [65, 59],
+                    data: [{{$datos['publicoM']}}, {{$datos['privadoM']}}],
                 },
             ],
         };
