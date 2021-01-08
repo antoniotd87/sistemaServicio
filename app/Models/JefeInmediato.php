@@ -11,7 +11,7 @@ class JefeInmediato extends Model
 
     protected $fillable = [
         'JEI_nombre',
-        'JEI_apellifoPaterno',
+        'JEI_apellidoPaterno',
         'JEI_apellidoMaterno',
         'JEI_cargo'
     ];

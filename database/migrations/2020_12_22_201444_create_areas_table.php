@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -22,9 +22,6 @@ class CreateAreasTable extends Migration
             $table->string('ARA_cargo', 45)->nullable();
             $table->string('ARA_correo', 45)->nullable();
             $table->string('ARA_telefono', 10)->nullable();
-            $table->string('ARA_municipio', 150)->nullable();
-            $table->string('ARA_calle', 150)->nullable();
-            $table->string('ARA_codigoPostal', 5)->nullable();
             $table->timestamps();
         });
     }

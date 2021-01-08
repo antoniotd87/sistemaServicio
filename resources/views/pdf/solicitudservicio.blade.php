@@ -30,7 +30,7 @@
     <P class="interlineado">NÚMERO DE CUENTA: 
         <span class="subrayado">{{$cuenta}}</span> </p>
     <P class="interlineado">TOTAL DE CRÉDITOS: 
-        <span class="subrayado">{{$creditos}}</span> </p>
+        <span class="subrayado">{{$creditos}} % de creditos</span> </p>
     <P class="interlineado">CORREO ELECTRÓNICO: 
         <span class="subrayado">{{$correo}}</span> </p>
     <P class="interlineado">NÚM. DE TELEFONO: 
@@ -38,9 +38,9 @@
     <P class="interlineado">DOMICILIO: 
         <span class="subrayado">{{$domicilio}}</span> </p>
     <P class="interlineado">EDAD: 
-        <span class="subrayado">{{$edad}}</span> </p>
+        <span class="subrayado">{{$edad}} años</span> </p>
     <P class="salto">SEMESTRE: 
-        <span class="subrayado">{{$semestre}}° Semestre</span> </p>
+        <span class="subrayado">{{$semestre}}</span> </p>
         <p class="izquierda salto">Vo. Bo. Jefe de Division</p>
         <p class="izquierda subrayado linea">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 @endsection

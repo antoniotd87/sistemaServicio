@@ -38,8 +38,9 @@ class JefeInmediatoController extends Controller
         $jefeInmediato = new JefeInmediato();
         //Aqui van mas parametros
         $jefeInmediato->JEI_nombre = $request->jefeInmediato;
+        $jefeInmediato->JEI_apellidoPaterno = $request->paternoInmediato;
+        $jefeInmediato->JEI_apellidoMaterno = $request->maternoInmediato;
         $jefeInmediato->JEI_cargo = $request->cargoJefeInmediato;
-
         $jefeInmediato->save();
         $idJI=$jefeInmediato->id;
         return $idJI;
@@ -77,6 +78,8 @@ class JefeInmediatoController extends Controller
     public function update(Request $request, JefeInmediato $jefeInmediato)
     {
         $jefeInmediato->JEI_nombre = $request->jefeInmediato;
+        $jefeInmediato->JEI_apellidoPaterno = $request->paternoInmediato;
+        $jefeInmediato->JEI_apellidoMaterno = $request->maternoInmediato;
         $jefeInmediato->JEI_cargo = $request->cargoJefeInmediato;
 
         $jefeInmediato->save();

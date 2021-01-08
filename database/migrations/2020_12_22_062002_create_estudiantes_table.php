@@ -27,6 +27,8 @@ class CreateEstudiantesTable extends Migration
             $table->string('EST_carrera', 45)->nullable();
             $table->string('EST_promedio', 45)->nullable();
             $table->string('EST_porcentajeCreditos', 45)->nullable();
+            $table->string('EST_grupo', 45)->nullable();
+            $table->string('EST_semestre', 45)->nullable();
             $table->date('EST_fechaNacimiento')->nullable();
             $table->string('EST_domicilio', 45)->nullable();
             $table->string('EST_rfc', 45)->nullable();

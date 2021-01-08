@@ -10,7 +10,7 @@
     }
 
     html {
-        margin: 2.5cm 3cm;
+        margin: 1.5cm 1.5cm;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 10pt;
     }
@@ -25,6 +25,11 @@
         text-transform: uppercase;
         font-size: 14pt;
     }
+    #logos {
+        height: 50px;
+        width: 150px;
+    }
+    
 
     .subtitulo {
         font-weight: bold;
