@@ -79,7 +79,7 @@ class AnexoTecnicoController extends Controller
             'ENR_correo' => $request->correoDependencia,
             'ENR_estimulo' => $request->estimuloDependencia,
         ]);
-         
+
         //Creacion del PDF
         //Probablemente se haga un controler exclusivo para pdf's
         $pdf = app('dompdf.wrapper');

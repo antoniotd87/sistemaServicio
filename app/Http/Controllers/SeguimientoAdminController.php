@@ -112,19 +112,19 @@ class SeguimientoAdminController extends Controller
         foreach ($users as $user) {
             switch ($user->STA_estado) {
                 case 'Inscrito':
-                    $user->EST_sexo == 'Masculino' ? $numInscritosH++ : $numInscritosM++;
+                    $user->EST_sexo == 'MASCULINO' ? $numInscritosH++ : $numInscritosM++;
                     $numInscritos++;
                     break;
                 case 'Baja':
-                    $user->EST_sexo == 'Masculino' ? $numBajasH++ : $numBajasM++;
+                    $user->EST_sexo == 'MASCULINO' ? $numBajasH++ : $numBajasM++;
                     $numBajas++;
                     break;
                 case 'Liberado':
-                    $user->EST_sexo == 'Masculino' ? $numLiberadosH++ : $numLiberadosM++;
+                    $user->EST_sexo == 'MASCULINO' ? $numLiberadosH++ : $numLiberadosM++;
                     $numLiberados++;
                     break;
                 case 'Por Concluir':
-                    $user->EST_sexo == 'Masculino' ? $numPorConcluirH++ : $numPorConcluirM++;
+                    $user->EST_sexo == 'MASCULINO' ? $numPorConcluirH++ : $numPorConcluirM++;
                     $numPorConcluir++;
                     break;
                 default:
@@ -187,7 +187,6 @@ class SeguimientoAdminController extends Controller
             ->join('entidad_receptoras', 'entidads.entidad_receptora_id', '=', 'entidad_receptoras.id')
             ->select('entidad_receptoras.ENR_sector', 'estudiantes.EST_sexo', 'estudiantes.EST_carrera')
             ->get();
-
         foreach ($users as $user) {
             switch ($user->EST_carrera) {
                 case 'Contador Publico':

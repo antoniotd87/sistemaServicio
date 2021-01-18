@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return redirect('home');
-}); 
+});
 
 Auth::routes();
 
@@ -77,9 +77,10 @@ Route::get('/seguimiento/bajas',[App\Http\Controllers\SeguimientoAdminController
 Route::get('/seguimiento/liberaciones',[App\Http\Controllers\SeguimientoAdminController::class, 'liberacion']);
 Route::get('/seguimiento/porConcluir',[App\Http\Controllers\SeguimientoAdminController::class, 'porConcluir']);
 
-Route::get('/archivos/ver', function() {return view('vistas.admin.archivos-ver');});
-Route::get('/archivos/agregar', function() {return view('vistas.admin.archivos-agregar');});
+Route::resource('archivos', ArchivosHistoricosController::class);
+
 Route::get('/constancias/generar', function() {return view('vistas.admin.constancias-generar');});
+Route::get('/seguimiento/porConcluir',[App\Http\Controllers\SeguimientoAdminController::class, 'porConcluir']);
 
 Route::get('/usuarios/importar',[App\Http\Controllers\UsuarioAdminController::class,'import']);
 Route::get('/usuarios/ver',[App\Http\Controllers\UsuarioAdminController::class,'index']);

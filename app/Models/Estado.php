@@ -9,10 +9,10 @@ class Estado extends Model
 {
     use HasFactory;
     protected $fillable = [
-    	'STA_estado',
-    	'STA_observacion',
-    	'STA_inicio',
-    	'STA_fin'
+        'STA_estado',
+        'STA_observacion',
+        'STA_inicio',
+        'STA_fin'
     ];
     public function seguimiento()
     {

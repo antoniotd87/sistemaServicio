@@ -12,7 +12,7 @@
             <div class="col-6">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="m-0 text-dark text-center">Por concluir: {{ $datos[0]+$datos[1]+$datos[2]+$datos[3] }} Alumnos</h3>
+                        <h3 class="m-0 text-dark text-center">Por concluir: {{ $datos[0]+$datos[1]+$datos[2]+$datos[3] }}  Alumnos</h3>
                         <br>
                         <div class="chart">
                             <canvas id="barAlumnosCarrera"

@@ -15,7 +15,7 @@
         <form action="{{route('anexoTecnico.update', ['estudiante'=>$estudiante->id])}}" method="post" class="row text-center" id="frmAnexoTecnico">
             @csrf
                 @method('PUT')
-            
+
             <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
                     <label for="inicioDependencia">Fecha de inicio:</label>
                     <input type="date" name="inicioDependencia" id="inicioDependencia"

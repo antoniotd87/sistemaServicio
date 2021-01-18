@@ -230,7 +230,7 @@ return [
     |
     */
 
-    'menu' => [        
+    'menu' => [
         ['header' => 'admiADMINISTRACION'],
         [
             'text' => 'admiSeguimiento',
@@ -264,11 +264,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'admi  Ver',
-                    'url'  => 'archivos/ver'
+                    'url'  => 'archivos'
                 ],
                 [
                     'text' => 'admi  Agregar',
-                    'url'  => 'archivos/agregar'
+                    'url'  => 'archivos/create'
                 ],
             ]
         ],
@@ -484,7 +484,7 @@ return [
 
     'livewire' => false,
 
-    
+
         'name' => 'AdminLTE-Components-DG',
         'active' => true,
         'files' => [
