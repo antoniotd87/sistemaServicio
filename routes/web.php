@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return redirect('home');
-}); 
+});
 
 Auth::routes();
 
@@ -33,7 +33,7 @@ Route::get('/home', function() {
 //Route::get('/perfil', function() {return view('vistas.perfil.show-perfil');});
 Route::get('/perfil/{estudiante}', [App\Http\Controllers\EstudianteController::class, 'show'])->name('estudiantes.show');
 
-Route::get('/perfil/{administrador}', [App\Http\Controllers\AdministradorController::class, 'show'])->name('administradores.show');
+Route::get('/perfil/{administrador}/admin', [App\Http\Controllers\AdministradorController::class, 'show'])->name('administradores.show');
 
 //Rutas Alumnos
 
@@ -46,7 +46,7 @@ Route::put('/datosPrestador/{estudiante}', [App\Http\Controllers\DatosPrestadorC
 
 
 Route::get('/registroAutorizacion/{estudiante}', [App\Http\Controllers\RegistroAutorizacionController::class, 'edit'])->name('registroAutorizacion.edit');
-Route::put('/registroAutorizacion/{estudiante}', [App\Http\Controllers\RegistroAutorizacionController::class, 'edit'])->name('registroAutorizacion.update');
+Route::put('/registroAutorizacion/{estudiante}', [App\Http\Controllers\RegistroAutorizacionController::class, 'update'])->name('registroAutorizacion.update');
 
 Route::get('/anexoTecnico/{estudiante}', [App\Http\Controllers\AnexoTecnicoController::class, 'edit'])->name('anexoTecnico.edit');
 Route::put('/anexoTecnico/{estudiante}', [App\Http\Controllers\AnexoTecnicoController::class, 'update'])->name('anexoTecnico.update');
@@ -69,9 +69,10 @@ Route::get('/seguimiento/bajas',[App\Http\Controllers\SeguimientoAdminController
 Route::get('/seguimiento/liberaciones',[App\Http\Controllers\SeguimientoAdminController::class, 'liberacion']);
 Route::get('/seguimiento/porConcluir',[App\Http\Controllers\SeguimientoAdminController::class, 'porConcluir']);
 
-Route::get('/archivos/ver', function() {return view('vistas.admin.archivos-ver');});
-Route::get('/archivos/agregar', function() {return view('vistas.admin.archivos-agregar');});
+Route::resource('archivos', ArchivosHistoricosController::class);
+
 Route::get('/constancias/generar', function() {return view('vistas.admin.constancias-generar');});
+Route::get('/seguimiento/porConcluir',[App\Http\Controllers\SeguimientoAdminController::class, 'porConcluir']);
 
 Route::get('/usuarios/importar',[App\Http\Controllers\UsuarioAdminController::class,'import']);
 Route::get('/usuarios/ver',[App\Http\Controllers\UsuarioAdminController::class,'index']);

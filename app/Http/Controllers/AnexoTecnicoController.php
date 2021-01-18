@@ -80,6 +80,7 @@ class AnexoTecnicoController extends Controller
      */
     public function update(Request $request, Estudiante $estudiante)
     {
+        return $request;
         $estudiante->update([
             'EST_carrera' => $request->carreraAlumno,
         ]);

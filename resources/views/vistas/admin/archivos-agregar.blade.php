@@ -11,10 +11,15 @@
         <div class="tab card-body p-0 px-2 pt-2 row">
             <div class="col-12">
                 <div class="d-flex justify-content-center">
-                    <form action="">
+                    <form enctype="multipart/form-data" method="post" action="{{route("archivos.store")}}">
+                        @csrf
                         <div class="form-group">
-                            <label for="subir">Subir nuevo archivo</label>
-                            <input type="file" name="subir" id="subir" class="form-control">
+                            <label for="name">Nombre del archivo</label>
+                            <input type="text" name="name" id="name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="archivo">Subir nuevo archivo</label>
+                            <input type="file" name="archivo" id="archivo" class="form-control">
                         </div>
                         <div class="form-group">
                             <input type="submit" value="Subir" class="btn btn-primary form-control">

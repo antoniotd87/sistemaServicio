@@ -14,7 +14,7 @@
     <div class="row">
         <form action="{{route('anexoTecnico.update', ['estudiante'=>$estudiante->id])}}" method="post" class="row text-center" id="frmAnexoTecnico">
             @csrf
-                @method('PUT')
+            @method('PUT')
             <div class="form-group col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-4">
                 <label for="nombreDependencia">Dependencia ejecutora:</label>
                 <input type="text" name="nombreDependencia" id="nombreDependencia" class="form-control text-center"
