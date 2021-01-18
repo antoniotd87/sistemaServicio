@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ReporteTrimestral;
+use App\Models\Estudiante;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ReporteTrimestralController extends Controller
 {
@@ -55,9 +56,12 @@ class ReporteTrimestralController extends Controller
      * @param  \App\Models\ReporteTrimestral  $reporteTrimestral
      * @return \Illuminate\Http\Response
      */
-    public function edit(ReporteTrimestral $reporteTrimestral)
+    public function edit(Estudiante $estudiante)
     {
-        //
+        if (!isset($estudiante->seguimiento->entidades)) {
+            return redirect()->route('solicitudServicio.edit', ['estudiante' => $estudiante->id]);
+        }
+        return view('vistas.alumno.reporte-trimestral', compact('estudiante'));
     }
 
     /**

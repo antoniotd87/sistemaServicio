@@ -33,7 +33,7 @@ Route::get('/home', function() {
 //Route::get('/perfil', function() {return view('vistas.perfil.show-perfil');});
 Route::get('/perfil/{estudiante}', [App\Http\Controllers\EstudianteController::class, 'show'])->name('estudiantes.show');
 
-Route::get('/perfil/{administrador}', [App\Http\Controllers\AdministradorController::class, 'show'])->name('administradores.show');
+Route::get('/perfil/{administrador}/admin', [App\Http\Controllers\AdministradorController::class, 'show'])->name('administradores.show');
 
 //Rutas Alumnos
 
@@ -46,7 +46,7 @@ Route::put('/datosPrestador/{estudiante}', [App\Http\Controllers\DatosPrestadorC
 
 
 Route::get('/registroAutorizacion/{estudiante}', [App\Http\Controllers\RegistroAutorizacionController::class, 'edit'])->name('registroAutorizacion.edit');
-Route::put('/registroAutorizacion/{estudiante}', [App\Http\Controllers\RegistroAutorizacionController::class, 'edit'])->name('registroAutorizacion.update');
+Route::put('/registroAutorizacion/{estudiante}', [App\Http\Controllers\RegistroAutorizacionController::class, 'update'])->name('registroAutorizacion.update');
 
 Route::get('/anexoTecnico/{estudiante}', [App\Http\Controllers\AnexoTecnicoController::class, 'edit'])->name('anexoTecnico.edit');
 Route::put('/anexoTecnico/{estudiante}', [App\Http\Controllers\AnexoTecnicoController::class, 'update'])->name('anexoTecnico.update');
@@ -59,6 +59,14 @@ Route::put('/solicitudPrivado2/{estudiante}', [App\Http\Controllers\SolicitudPri
 
 Route::get('/solicitudPrivado3/{estudiante}', [App\Http\Controllers\SolicitudPrivado3Controller::class, 'edit'])->name('solicitudPrivado3.edit');
 Route::put('/solicitudPrivado3/{estudiante}', [App\Http\Controllers\SolicitudPrivado3Controller::class, 'update'])->name('solicitudPrivado3.update');
+
+Route::get('/bimestral/{estudiante}', [App\Http\Controllers\ReporteBimestralController::class, 'edit'])->name('bimestral.edit');
+Route::put('/bimestral/{estudiante}', [App\Http\Controllers\ReporteBimestralController::class, 'update'])->name('bimestral.update');
+
+Route::get('/trimestral/{estudiante}', [App\Http\Controllers\ReporteTrimestralController::class, 'edit'])->name('trimestral.edit');
+Route::put('/trimestral/{estudiante}', [App\Http\Controllers\ReporteTrimestralController::class, 'update'])->name('trimestral.update');
+
+
 
 //Route::resource('estudiantes','EstudiantesController');
 

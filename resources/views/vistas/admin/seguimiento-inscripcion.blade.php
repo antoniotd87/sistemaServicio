@@ -24,7 +24,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="#5">Estado de SS</a>
             </li>
-        </ul>
+        </ul> 
         <div class="tab card-body p-0 px-2 pt-2">
             <div id="1" class="contenido-inscripcion d-block">
                 <div class="row">
@@ -48,7 +48,7 @@
                             <div class="card-body">
                                 <div class="chart">
                                     <canvas id="barAlumnosCarrera"
-                                        style="min-height: 230px; height: 280px; max-width: 100%;"></canvas>
+                                        style="min-height: 250px; height: 280px; max-width: 100%; max-height: 250px;"></canvas>
                                 </div>
                             </div>
                             <!-- /.card-body -->
@@ -92,18 +92,26 @@
                     <table class="table table-responsive w-100" id="table">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Ubicacion</th>
-                                <th scope="col">Telefono</th>
+                                <th scope="col" style="text-align: center;">#</th>
+                                <th scope="col" style="text-align: center;">Nombre</th>
+                                <th scope="col" style="text-align: center;">Ubicacion</th>
+                                <th scope="col" style="text-align: center;">Telefono</th>
+                                <th scope="col" style="text-align: center;">Editar</th>
+                                <th scope="col" style="text-align: center;">Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <th scope="row">1</th>
-                                <td>Tecnologico de Estudios SSF</td>
-                                <td>San Felipe del Progreso</td>
-                                <td>7121754585</td>
+                                <td style="text-align: center;">Tecnologico de Estudios SSF</td>
+                                <td style="text-align: center;">San Felipe del Progreso</td>
+                                <td style="text-align: center;">7121754585</td>
+                                <td>
+                                        <a href="#">Editar</a>
+                                    </td>
+                                    <td>
+                                        <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="#">Eliminar</a>
+                                    </td>
                             </tr>
                         </tbody>
                     </table>
@@ -114,24 +122,50 @@
                 <h3 class="m-0 text-dark text-center">
                     Datos del Prestador de Servicio Social (Alumnos)</h3>
                 <br>
-                <div class="d-flex justify-content-center">
+                <div class="">
 
                     <table class="table table-responsive w-100" id="tablePSS">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Apellido</th>
-                                <th scope="col">Telefono</th>
-                                <th scope="col">Promedio</th>
+                                <th scope="col" style="text-align: center;">No. Cuenta</th>
+                                <th scope="col" style="text-align: center;">Nombre</th>
+                                <th scope="col" style="text-align: center;">Apellidos</th>
+                                <th scope="col" style="text-align: center;">Carrera</th>
+                                <th scope="col" style="text-align: center;">Creditos</th>
+                                <th scope="col" style="text-align: center;">Promedio</th>
+                                <th scope="col" style="text-align: center;">Semestre</th>
+                                <th scope="col" style="text-align: center;">Grupo</th>
+                                <th scope="col" style="text-align: center;">Edad</th>
+                                <th scope="col" style="text-align: center;">Sexo</th>
+                                <th scope="col" style="text-align: center;">Fecha de Nacimiento</th>
+                                <th scope="col" style="text-align: center;">CURP</th>
+                                <th scope="col" style="text-align: center;">Domicilio</th>
+                                <th scope="col" style="text-align: center;">Editar</th>
+                                <th scope="col" style="text-align: center;">Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($prestadors as $prestador)
                                 <tr>
-                                    <td>{{ $prestador->usuario->email }}</td>
-                                    <td>{{ $prestador->EST_nombre }}</td>
-                                    <td>{{ $prestador->EST_apellidoPaterno }}</td>
-                                    <td>{{ $prestador->EST_telefono }}</td>
+                                    <td style="text-align: center;">{{ $prestador->EST_numeroCuenta }}</td>
+                                    <td style="text-align: center;">{{ $prestador->EST_nombre }}</td>
+                                    <td style="text-align: center;">{{ $prestador->EST_apellidoPaterno }} {{ $prestador->EST_apellidoMaterno }}</td>
+                                    <td style="text-align: center;">{{ $prestador->EST_carrera }}</td>
+                                    <td style="text-align: center;">{{ $prestador->EST_porcentajeCreditos }} %</td>
+                                    <td style="text-align: center;">{{ $prestador->EST_promedio }}</td>
+                                    <td style="text-align: center;">{{ $prestador->EST_semestre }}</td>
+                                    <td style="text-align: center;">{{ $prestador->EST_grupo }}</td>
+                                    <td style="text-align: center;">{{ $prestador->EST_edad }} años</td>
+                                    <td style="text-align: center;">{{ $prestador->EST_sexo }}</td>
+                                    <td style="text-align: center;">{{ $prestador->EST_fechaNacimiento }}</td>
+                                    <td style="text-align: center;">{{ $prestador->EST_curp }}</td>
+                                    <td style="text-align: center;">{{ $prestador->EST_domicilio }}</td>
+                                    <td>
+                                        <a href="#">Editar</a>
+                                    </td>
+                                    <td>
+                                        <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="#">Eliminar</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -143,22 +177,48 @@
                 <h3 class="m-0 text-dark text-center">
                     Datos de entidad receptora (Empresa o Institución)</h3>
                 <br>
-                <div class="d-flex justify-content-center">
+                <div class="">
 
                     <table class="table table-responsive w-100" id="tableER">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Ubicacion</th>
-                                <th scope="col">Encargado</th>
+                                <th scope="col" style="text-align: center;">ID</th>
+                                <th scope="col" style="text-align: center;">Nombre</th>
+                                <th scope="col" style="text-align: center;">Direccion</th>
+                                <th scope="col" style="text-align: center;">Municipio</th>
+                                <th scope="col" style="text-align: center;">Sector</th>
+                                <th scope="col" style="text-align: center;">Telefono</th>
+                                <th scope="col" style="text-align: center;">Area</th>
+                                <th scope="col" style="text-align: center;">Responsable del SS</th>
+                                <th scope="col" style="text-align: center;">Horario del SS</th>
+                                <th scope="col" style="text-align: center;">Proyecto en que participara</th>
+                                <th scope="col" style="text-align: center;">Creacion</th>
+                                <th scope="col" style="text-align: center;">Cambio</th>
+                                <th scope="col" style="text-align: center;">Editar</th>
+                                <th scope="col" style="text-align: center;">Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($institucions as $institucion)
                                 <tr>
-                                    <td>{{ $institucion->ENR_nombre }}</td>
-                                    <td>{{ $institucion->ENR_municipio }}</td>
-                                    <td>{{ $institucion->entidad->area->ARA_nombre }}</td>
+                                    <td style="text-align: center;">{{ $institucion->id }}</td>
+                                    <td style="text-align: center;">{{ $institucion->ENR_nombre }}</td>
+                                    <td style="text-align: center;">{{ $institucion->ENR_calle }}, {{ $institucion->ENR_domicilio }}, {{ $institucion->ENR_codigoPostael }}, {{ $institucion->ENR_municipio }}</td>
+                                    <td style="text-align: center;">{{ $institucion->ENR_municipio }}</td>
+                                    <td style="text-align: center;">{{ $institucion->ENR_sector }}</td>
+                                    <td style="text-align: center;">{{ $institucion->ENR_telefono }}</td>
+                                    <td style="text-align: center;">{{ $institucion->entidad->area->ARA_nombre }}</td>
+                                    <td style="text-align: center;">{{ $institucion->entidad->area->ARA_nombreResponsable }} {{ $institucion->entidad->area->ARA_apellidoPaterno }} {{ $institucion->entidad->area->ARA_apellidoMaterno }}</td>
+                                    <td style="text-align: center;">{{ $institucion->ENR_horario }}</td>
+                                    <td style="text-align: center;">{{ $institucion->ENR_programaParticipa }}</td>
+                                    <td style="text-align: center;">{{ $institucion->created_at }}</td>
+                                    <td style="text-align: center;">{{ $institucion->updated_at }}</td>
+                                    <td>
+                                        <a href="#">Editar</a>
+                                    </td>
+                                    <td>
+                                        <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="#">Eliminar</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -174,19 +234,29 @@
                     <table class="table table-responsive w-100" id="tableESS">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Apellido</th>
-                                <th scope="col">Inicio</th>
-                                <th scope="col">Estado</th>
+                                <th scope="col" style="text-align: center;">ID</th>
+                                <th scope="col" style="text-align: center;">Prestador de Servicio Social</th>
+                                <th scope="col" style="text-align: center;">Estado</th>
+                                <th scope="col" style="text-align: center;">Creacion</th>
+                                <th scope="col" style="text-align: center;">Cambio</th>
+                                <th scope="col" style="text-align: center;">Editar</th>
+                                <th scope="col" style="text-align: center;">Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($prestadors as $prestador)
                                 <tr>
-                                    <td>{{ $prestador->EST_nombre }}</td>
-                                    <td>{{ $prestador->EST_apellidoPaterno }}</td>
-                                    <td>{{ $prestador->created_at }}</td>
-                                    <td>{{ $prestador->seguimiento->estado->STA_estado }}</td>
+                                    <td style="text-align: center;">{{ $prestador->id }}</td>
+                                    <td style="text-align: center;">{{ $prestador->EST_nombre }} {{ $prestador->EST_apellidoPaterno }} {{ $prestador->EST_apellidoMaterno }}</td>
+                                    <td style="text-align: center;">{{ $prestador->seguimiento->estado->STA_estado }}</td>
+                                    <td style="text-align: center;">{{ $prestador->created_at }}</td>
+                                    <td style="text-align: center;">{{ $prestador->updated_at }}</td>
+                                    <td>
+                                        <a href="#">Editar</a>
+                                    </td>
+                                    <td>
+                                        <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="#">Eliminar</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -256,11 +326,11 @@
         var donutAlumnosSexo = $('#donutChartAlumnosSexo').get(0).getContext('2d')
         var donutDataPPS = {
             labels: [
-                'Hombre',
-                'Mujer',
+                'Hombres',
+                'Mujeres',
             ],
             datasets: [{
-                data: [{{$datos['publicoM']+$datos['privadoM']}},{{$datos['publicoH']+$datos['privadoH']}}],
+                data: [{{$datos['masculino']}},{{$datos['femenino']}}],
                 backgroundColor: ['rgba(60,141,188)', 'rgba(210, 214, 222)'],
             }]
         }
@@ -273,28 +343,10 @@
 
         /* Grafica de Barras */
         var areaChartData = {
-            labels: ["Informatica", "Civil", "Quimica", "Industrias Alimentarias", "Energias Renovables",
+            labels: ["Ing. Informatica", "Ing. Civil", " Ing. Quimica", "Ing. Industrias Alimentarias", "Ing. Energias Renovables",
                 "Contador Publico"
             ],
             datasets: [{
-                    label: "Hombres",
-                    backgroundColor: "rgba(60,141,188,0.9)",
-                    borderColor: "rgba(60,141,188,0.8)",
-                    pointRadius: false,
-                    pointColor: "#3b8bba",
-                    pointStrokeColor: "rgba(60,141,188,1)",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(60,141,188,1)",
-                    data: [
-                        {{$datos['iiH']}}, 
-                        {{$datos['icH']}}, 
-                        {{$datos['iqH']}}, 
-                        {{$datos['iiaH']}}, 
-                        {{$datos['ierH']}},
-                        {{$datos['cpH']}}
-                    ],
-                },
-                {
                     label: "Mujeres",
                     backgroundColor: "rgba(210, 214, 222, 1)",
                     borderColor: "rgba(210, 214, 222, 1)",
@@ -310,6 +362,24 @@
                         {{$datos['iiaM']}}, 
                         {{$datos['ierM']}},
                         {{$datos['cpM']}}
+                    ],
+                },
+                {
+                    label: "Hombres",
+                    backgroundColor: "rgba(60,141,188,0.9)",
+                    borderColor: "rgba(60,141,188,0.8)",
+                    pointRadius: false,
+                    pointColor: "#3b8bba",
+                    pointStrokeColor: "rgba(60,141,188,1)",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(60,141,188,1)",
+                    data: [
+                        {{$datos['iiH']}}, 
+                        {{$datos['icH']}}, 
+                        {{$datos['iqH']}}, 
+                        {{$datos['iiaH']}}, 
+                        {{$datos['ierH']}},
+                        {{$datos['cpH']}}
                     ],
                 },
             ],
@@ -367,7 +437,7 @@
                     pointStrokeColor: "rgba(60,141,188,1)",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(60,141,188,1)",
-                    data: [{{$datos['publicoH']}}, {{$datos['privadoH']}}],
+                    data: [{{$datos['publicoH']}}, {{$datos['privadoM']}}],
                 },
                 {
                     label: "Mujeres",
@@ -378,7 +448,7 @@
                     pointStrokeColor: "#c1c7d1",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: [{{$datos['publicoM']}}, {{$datos['privadoM']}}],
+                    data: [{{$datos['publicoM']}}, {{$datos['privadoH']}}],
                 },
             ],
         };

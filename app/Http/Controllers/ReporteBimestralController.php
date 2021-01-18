@@ -1,9 +1,10 @@
 <?php
-
+ 
 namespace App\Http\Controllers;
 
-use App\Models\ReporteBimestral;
+use App\Models\Estudiante;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ReporteBimestralController extends Controller
 {
@@ -55,9 +56,12 @@ class ReporteBimestralController extends Controller
      * @param  \App\Models\ReporteBimestral  $reporteBimestral
      * @return \Illuminate\Http\Response
      */
-    public function edit(ReporteBimestral $reporteBimestral)
+    public function edit(Estudiante $estudiante)
     {
-        //
+        if (!isset($estudiante->seguimiento->entidades)) {
+            return redirect()->route('solicitudServicio.edit', ['estudiante' => $estudiante->id]);
+        }
+        return view('vistas.alumno.reporte-bimestral', compact('estudiante'));
     }
 
     /**

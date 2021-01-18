@@ -70,7 +70,7 @@
                         {{ __('adminlte::menu.profile') }}
                     </a>
                 @else
-                    <a href="{{$profile_url."/".Auth::user()->administrador->id}}" class="btn btn-default btn-flat">
+                    <a href="{{$profile_url."/".Auth::user()->administrador->id."/admin"}}" class="btn btn-default btn-flat">
                         <i class="fa fa-fw fa-user"></i>
                         {{ __('adminlte::menu.profile') }}
                     </a>

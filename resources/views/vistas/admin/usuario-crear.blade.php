@@ -49,28 +49,6 @@
                     </form>
                 </div>
                 <br>
-                <div class="d-flex justify-content-center">
-                    <table class="table table-responsive w-100" id="table">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">Correo</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Apellidos</th>
-                                <th scope="col">No. Cuenta</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($estudiantes as $estudiante)
-                                <tr>
-                                    <td>{{ $estudiante->usuario->email }}</td>
-                                    <td>{{ $estudiante->EST_nombre }}</td>
-                                    <td>{{ $estudiante->EST_apellidoPaterno }}</td>
-                                    <td>{{ $estudiante->EST_telefono }}</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
             </div>
         </div>
     </div>

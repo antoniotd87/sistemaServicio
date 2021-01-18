@@ -29,6 +29,12 @@
         height: 50px;
         width: 150px;
     }
+    #table {
+        width: all;
+            }
+        td, th {
+        border: black 0.5px solid;
+    }
     
 
     .subtitulo {
@@ -42,6 +48,9 @@
     }
     .salto{
         margin-bottom: 25pt;
+    }
+    .saltos{
+        margin-bottom: 5pt;
     }
     .interlineado{
         margin-bottom: 5pt;

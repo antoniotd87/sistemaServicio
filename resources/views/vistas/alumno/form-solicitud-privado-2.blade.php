@@ -1,15 +1,25 @@
-<div class="col-xs-12 col-sm-12 col-md-6 col-lg-5 col-xl-5 text-left"> 
-    <h5 class="text-uppercase font-weight-bold">Lic. Veronica Sanchez Guadarrama</h5>
-    <h5 class="text-uppercase font-weight-bold">Titular de la unidad de servicio social</h5>
-    <h5 class="text-uppercase font-weight-bold">P r e s e n t e</h5>
-</div>
-<div class="form-group col-xs-12 col-sm-8 col-md-4 col-lg-5 col-xl-5 ">
+@extends('adminlte::page')
+
+ 
+@section('title', 'Sistema Servicio')
+
+@section('content_header')
+    <h2 class="m-0 text-dark text-center">
+        Solicitud para empresas de sector privado para dos personas
+    </h2>
+@stop
+
+@section('content')
+<form action="{{route('solicitudPrivado2.update', ['estudiante'=>$estudiante->id])}}" method="post" class="row text-center" id="solicitudPrivado2">
+    @csrf
+                    @method('PUT')
+<div style="margin-left: auto;">
     <label for="municipioDependencia">Lugar:</label>
     <input type="text" name="municipioDependencia" id="municipioDependencia" class="form-control text-center"
-        placeholder="Ingrese el nombre del municipio">
+        placeholder="Ingrese el nombre del municipio" value="{{ isset($estudiante->seguimiento->entidades) ? $estudiante->seguimiento->entidades->entidad->ENR_municipio : '' }}">
 </div>
 
-<div class="form-group col-xs-12 col-sm-4 col-md-2 col-lg-2 col-xl-2 ">
+<div>
     <label for="municipioDependencia">Fecha:</label>
     <input type="text" name="municipioDependencia" id="municipioDependencia" class="form-control text-center"
         placeholder="Ingrese el nombre del municipio">
@@ -17,6 +27,11 @@
 </div>
 
 <div class="contenedor-solicitud d-flex w-100 justify-content-between flex-wrap ml-2 text-left">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-5 col-xl-5 text-left">
+    <h5 class="text-uppercase font-weight-bold">Lic. Veronica Sanchez Guadarrama</h5>
+    <h5 class="text-uppercase font-weight-bold">Titular de la unidad de servicio social</h5>
+    <h5 class="text-uppercase font-weight-bold">P r e s e n t e</h5>
+</div>
     <div class="w-100">
         <br><br>
     </div>
@@ -24,68 +39,85 @@
         <p class="m-0 mt-2">El que suscribe,</p>
     </div>
     <div class="mr-2 mb-3 flex-grow-1">
-        <input type="text" name="responsableEmpresa" id="responsableEmpresa" class="form-control text-center"
-            placeholder="Ingrese el nombre del responsable de SS en la empresa">
+        <input type="text" name="responsableDependencia" id="responsableDependencia" class="form-control text-center"
+            placeholder="Ingrese el nombre del responsable de SS en la empresa" value="{{ isset($estudiante->seguimiento->entidades) ? $estudiante->seguimiento->entidades->area->ARA_nombreResponsable : '' }}">
     </div>
-    <div class="mr-2 mb-3">
-        <p class="m-0 mt-2">,</p>
+   <div class="mr-1 mb-3 flex-grow-1">
+        <input type="text" name="apellidoPaternoResponsable" id="apellidoPaternoResponsable" class="form-control text-center"
+            placeholder="Ingrese el apellido paterno" value="{{ isset($estudiante->seguimiento->entidades) ? $estudiante->seguimiento->entidades->area->ARA_apellidoPaterno : '' }}">
     </div>
-    <div class="mr-2 mb-3 flex-grow-1">
-        <input type="text" name="cargoEmpresa" id="cargoEmpresa" class="form-control text-center"
-            placeholder="Ingrese el nombre del cargo">
+    <div class="mr-1 mb-3 flex-grow-1">
+        <input type="text" name="apellidoMaternoResponsable" id="apellidoMaternoResponsable" class="form-control text-center"
+            placeholder="Ingrese el apellido materno" value="{{ isset($estudiante->seguimiento->entidades) ? $estudiante->seguimiento->entidades->area->ARA_apellidoMaterno : '' }}">
     </div>
-    <div class="mr-2 mb-3">
-        <p class="m-0 mt-2">,</p>
+    <div class="mr-1 mb-3">
+        <p class="m-0 mt-2">
     </div>
-    <div class="mr-2 mb-3 flex-grow-1">
-        <input type="text" name="nombreEmpresa" id="nombreEmpresa" class="form-control text-center"
-            placeholder="Ingrese el nombre de la empresa">
+    <div class="mr-1 mb-3 flex-grow-1">
+        <input type="text" name="cargoResponsable" id="cargoResponsable" class="form-control text-center"
+            placeholder="Ingrese el nombre del cargo" value="{{ isset($estudiante->seguimiento->entidades) ? $estudiante->seguimiento->entidades->area->ARA_cargo : '' }}">
     </div>
-    <div class="mr-2 mb-3">
-        <p class="m-0 mt-2">,</p>
-    </div>
-    <div class="w-100"></div>
 
-
-    <div class="mr-2 mb-3 flex-grow-1">
-        <input type="text" name="ubicacionEmpresa" id="ubicacionEmpresa" class="form-control text-center"
-            placeholder="Ingrese la ubicacion de la empresa">
+    <div class="mr-1 mb-3">
+        <p class="m-0 mt-2">, de la empresa</p>
     </div>
+    <div class="mr-1 mb-3 flex-grow-1">
+        <input type="text" name="nombreDependencia" id="nombreDependencia" class="form-control text-center"
+            placeholder="Ingrese el nombre de la empresa" value="{{ isset($estudiante->seguimiento->entidades) ? $estudiante->seguimiento->entidades->entidad->ENR_nombre : '' }}">
+    </div>
+    <div class="mr-2 mb-3">
+        <p class="m-0 mt-2">,</p>
+    </div>
+    <div class="mr-1 mb-3 flex-grow-1">
+        <input type="text" name="calleDependencia" id="calleDependencia" class="form-control text-center"
+            placeholder="Ingrese la calle de la empresa" value="{{ isset($estudiante->seguimiento->entidades) ? $estudiante->seguimiento->entidades->entidad->ENR_calle : '' }}">
+    </div>
+    <div class="mr-2 mb-3">
+        <p class="m-0 mt-2">,</p>
+    </div>
+    <div class="mr-1 mb-3 flex-grow-1">
+        <input type="text" name="codigoPostalDependencia" id="codigoPostalDependencia" class="form-control text-center"
+            placeholder="Ingrese el C.P de ubicación" value="{{ isset($estudiante->seguimiento->entidades) ? $estudiante->seguimiento->entidades->entidad->ENR_codigoPostal : '' }}">
+    </div>
+    <div class="mr-2 mb-3">
+        <p class="m-0 mt-2">,</p>
+    </div>
+    <div class="mr-1 mb-3 flex-grow-1">
+        <input type="text" name="municipioDependencia" id="municipioDependencia" class="form-control text-center"
+            placeholder="Ingrese el municipio de la empresa" value="{{ isset($estudiante->seguimiento->entidades) ? $estudiante->seguimiento->entidades->entidad->ENR_municipio : '' }}">
+    </div>
+
     <div class="mr-2 mb-3">
         <p class="m-0 mt-2">.</p>
     </div>
     <div class="mr-2 mb-3">
-        <p class="m-0 mt-2">Por medio de este conducto me dirigo a usted de la manera mas atenta para solicitar al
-            C.</p>
+        <p class="m-0 mt-2">Por medio de este conducto me dirigo a usted de la manera mas atenta para solicitar a las C.</p>
     </div>
-    <div class="w-100"></div>
-
-
     <div class="mr-2 mb-3 flex-grow-1">
         <input type="text" name="nombreAlumno" id="nombreAlumno" class="form-control text-center"
-            placeholder="Ingrese el nombre del alumno">
+            placeholder="Ingrese el nombre del alumno" value="{{$estudiante->EST_nombre}}">
     </div>
     <div class="mr-2 mb-3 flex-grow-1">
         <input type="text" name="apellidoPaternoAlumno" id="apellidoPaternoAlumno" class="form-control text-center"
-            placeholder="Ingrese el apellido paterno">
+            placeholder="Ingrese el apellido paterno" value="{{$estudiante->EST_apellidoPaterno}}">
     </div>
     <div class="mr-2 mb-3 flex-grow-1">
         <input type="text" name="apellidoMaternoAlumno" id="apellidoMaternoAlumno" class="form-control text-center"
-            placeholder="Ingrese el apellido materno">
+            placeholder="Ingrese el apellido materno" value="{{$estudiante->EST_apellidoMaterno}}">
     </div>
     <div class="mr-2 mb-3">
-        <p class="m-0 mt-2">y</p>
+        <p class="m-0 mt-2"> y </p>
     </div>
     <div class="mr-2 mb-3 flex-grow-1">
-        <input type="text" name="nombreAlumno" id="nombreAlumno" class="form-control text-center"
+        <input type="text" name="nombre2" id="nombre2" class="form-control text-center"
             placeholder="Ingrese el nombre del alumno">
     </div>
     <div class="mr-2 mb-3 flex-grow-1">
-        <input type="text" name="apellidoPaternoAlumno" id="apellidoPaternoAlumno" class="form-control text-center"
+        <input type="text" name="apellidoPaterno2" id="apellidoPaterno2" class="form-control text-center"
             placeholder="Ingrese el apellido paterno">
     </div>
     <div class="mr-2 mb-3 flex-grow-1">
-        <input type="text" name="apellidoMaternoAlumno" id="apellidoMaternoAlumno" class="form-control text-center"
+        <input type="text" name="apellidoMaterno2" id="apellidoMaterno2" class="form-control text-center"
             placeholder="Ingrese el apellido materno">
     </div>
     <div class="mr-2 mb-3">
@@ -93,45 +125,45 @@
     </div>
     <div class="mr-2 mb-3 flex-grow-1">
         <select name="carreraAlumno" id="carreraAlumno" class="form-control text-center">
-            <option value="">Seleccionar</option>
+            <option value="{{$estudiante->EST_carrera}}">Seleccionar</option>
             <option value="Contador Publico">Contador Publico</option>
-                        <option value="Ingenieria Informatica">Ingenieria Informatica</option>
-                        <option value="Ingenieria Civil">Ingenieria Civil</option>
-                        <option value="Ingenieria en Industrias Alimentarias">Ingenieria en Industrias Alimentarias</option>
-                        <option value="Ingenieria en Energias Renovables">Ingenieria en Energias Renovables</option>
-                        <option value="Ingenieria Quimica">Ingenieria Quimica</option>
+            <option value="Ingenieria Informatica">Ingenieria Informatica</option>
+            <option value="Ingenieria Civil">Ingenieria Civil</option>
+            <option value="Ingenieria en Industrias Alimentarias">Ingenieria en Industrias Alimentarias</option>
+            <option value="Ingenieria en Energias Renovables">Ingenieria en Energias Renovables</option>
+            <option value="Ingenieria Quimica">Ingenieria Quimica</option>
         </select>
     </div>
     <div class="mr-2 mb-3">
-        <p class="m-0 mt-2">con el numero de cuenta</p>
+        <p class="m-0 mt-2">con numeros de cuenta</p>
     </div>
     <div class="mr-2 mb-3 flex-grow-1"><input type="number" name="cuentaAlumno" id="cuentaAlumno"
-            class="form-control text-center" placeholder="Ingrese su numero de cuenta">
+            class="form-control text-center" placeholder="Ingrese su numero de cuenta" value="{{$estudiante->EST_numeroCuenta}}">
     </div>
     <div class="mr-2 mb-3">
-        <p class="m-0 mt-2">y</p>
+        <p class="m-0 mt-2"> y </p>
     </div>
-    <div class="mr-2 mb-3 flex-grow-1"><input type="number" name="cuentaAlumno" id="cuentaAlumno"
+    <div class="mr-2 mb-3 flex-grow-1"><input type="number" name="cuenta2" id="cuenta2"
             class="form-control text-center" placeholder="Ingrese su numero de cuenta">
     </div>
     <div class="mr-2 mb-3">
         <p class="m-0 mt-2">;</p>
     </div>
     <div class="mr-2 mb-3">
-        <p class="m-0 mt-2"> del Tecnologico de Estudios Superiores de San Felipe del Progreso, para que realice su
+        <p class="m-0 mt-2"> respectivamente, del Tecnologico de Estudios Superiores de San Felipe del Progreso, para que realice su
             Servicio social en la empresa a mi cargo, en el área de </p>
     </div>
-    <div class="w-100"></div>
+    
     <div class="mr-2 mb-3 flex-grow-1">
         <input type="text" name="areaServicioSocial" id="areaServicioSocial" class="form-control text-center"
-            placeholder="Ingrese el nombre del area">
+            placeholder="Ingrese el nombre del area" value="{{ isset($estudiante->seguimiento->entidades) ? $estudiante->seguimiento->entidades->area->ARA_nombre : '' }}">
     </div>
     <div class="mr-2 mb-3">
         <p class="m-0 mt-2">en el horario de</p>
     </div>
 
     <div class="mr-2 mb-3 flex-grow-1">
-        <input type="time" name="areaServicioSocial" id="areaServicioSocial" class="form-control text-center">
+        <input type="time" name="entradaDependencia" id="entradaDependencia" class="form-control text-center" value="{{ isset($estudiante->seguimiento->entidades) ? $estudiante->seguimiento->entidades->entidad->ENR_horaEntrada : '' }}">
     </div>
 
     <div class="mr-2 mb-3">
@@ -139,40 +171,14 @@
     </div>
 
     <div class="mr-2 mb-3 flex-grow-1">
-        <input type="time" name="areaServicioSocial" id="areaServicioSocial" class="form-control text-center">
+        <input type="time" name="salidaDependencia" id="salidaDependencia" class="form-control text-center" value="{{ isset($estudiante->seguimiento->entidades) ? $estudiante->seguimiento->entidades->entidad->ENR_HoraSalida : '' }}">
     </div>
     <div class="mr-2 mb-3">
         <p class="m-0 mt-2">, de</p>
     </div>
 
     <div class="mr-2 mb-3 flex-grow-1">
-        <select name="carreraAlumno" id="carreraAlumno" class="form-control text-center">
-            <option value="">Seleccionar.</option>
-            <option value="Domingo">Domingo</option>
-            <option value="Lunes">Lunes</option>
-            <option value="Martes">Martes</option>
-            <option value="Miercoles">Miercoles</option>
-            <option value="Jueves">Jueves</option>
-            <option value="Viernes">Viernes</option>
-            <option value="Sabado">Sabado</option>
-        </select>
-    </div>
-
-    <div class="mr-2 mb-3">
-        <p class="m-0 mt-2">a</p>
-    </div>
-    <div class="w-100"></div>
-    <div class="mr-2 mb-3 flex-grow-1">
-        <select name="carreraAlumno" id="carreraAlumno" class="form-control text-center">
-            <option value="">Seleccionar.</option>
-            <option value="Domingo">Domingo</option>
-            <option value="Lunes">Lunes</option>
-            <option value="Martes">Martes</option>
-            <option value="Miercoles">Miercoles</option>
-            <option value="Jueves">Jueves</option>
-            <option value="Viernes">Viernes</option>
-            <option value="Sabado">Sabado</option>
-        </select>
+        <input type="text" name="horarioDependencia" id="horarioDependencia" class="form-control text-center" value="{{ isset($estudiante->seguimiento->entidades) ? $estudiante->seguimiento->entidades->entidad->ENR_horario : '' }}">
     </div>
 
     <div class="mr-2 mb-3">
@@ -180,7 +186,7 @@
     </div>
 
     <div class="mr-2 mb-3 flex-grow-1">
-        <input type="date" name="areaServicioSocial" id="areaServicioSocial" class="form-control text-center">
+        <input type="date" name="inicioDependencia" id="inicioDependencia" class="form-control text-center" value="{{ isset($estudiante->seguimiento->entidades) ? $estudiante->seguimiento->entidades->entidad->ENR_fechaInicio : '' }}">
     </div>
 
     <div class="mr-2 mb-3 ">
@@ -188,7 +194,7 @@
     </div>
 
     <div class="mr-2 mb-3 flex-grow-1">
-        <input type="date" name="areaServicioSocial" id="areaServicioSocial" class="form-control text-center">
+        <input type="date" name="terminoDependencia" id="terminoDependencia" class="form-control text-center" value="{{ isset($estudiante->seguimiento->entidades) ? $estudiante->seguimiento->entidades->entidad->ENR_fechaTermino : '' }}">
     </div>
     <div class="w-100">
         <br><br><br>
@@ -199,8 +205,8 @@
     </div>
 
     <div class="mr-2 mb-3 flex-grow-1">
-        <input type="number" name="estimuloEmpresa" id="estimuloEmpresa" class="form-control text-center"
-            placeholder="Ingrese la cantidad del estimulo">
+        <input type="number" name="estimuloDependencia" id="estimuloDependencia" class="form-control text-center"
+            placeholder="Ingrese la cantidad del estimulo" value="{{ isset($estudiante->seguimiento->entidades) ? $estudiante->seguimiento->entidades->entidad->ENR_estimulo : '' }}">
     </div>
 
     <div class="mr-2 mb-3">
@@ -222,8 +228,9 @@
 
     <div class="w-100"></div>
 
-    <div class="mr-2 mb-3 w-100">
-        <br>
-        <input type="submit" value="Enviar" class="btn btn-primary btn-block btn-lg w-25">
-    </div>
+    <div class="col-12 row d-flex justify-content-center pr-0 mt-3">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 pr-0">
+        <input type="submit" value="Enviar" class="btn btn-primary btn-block btn-lg ml-1">
 </div>
+</form>
+@stop

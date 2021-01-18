@@ -111,20 +111,20 @@ class SeguimientoAdminController extends Controller
 
         foreach ($users as $user) {
             switch ($user->STA_estado) {
-                case 'inscrito':
-                    $user->EST_sexo == 'MASCULINO' ? $numInscritosH++ : $numInscritosM++;
+                case 'Inscrito':
+                    $user->EST_sexo == 'Masculino' ? $numInscritosH++ : $numInscritosM++;
                     $numInscritos++;
                     break;
-                case 'baja':
-                    $user->EST_sexo == 'MASCULINO' ? $numBajasH++ : $numBajasM++;
+                case 'Baja':
+                    $user->EST_sexo == 'Masculino' ? $numBajasH++ : $numBajasM++;
                     $numBajas++;
                     break;
-                case 'liberado':
-                    $user->EST_sexo == 'MASCULINO' ? $numLiberadosH++ : $numLiberadosM++;
+                case 'Liberado':
+                    $user->EST_sexo == 'Masculino' ? $numLiberadosH++ : $numLiberadosM++;
                     $numLiberados++;
                     break;
-                case 'porConcluir':
-                    $user->EST_sexo == 'MASCULINO' ? $numPorConcluirH++ : $numPorConcluirM++;
+                case 'Por Concluir':
+                    $user->EST_sexo == 'Masculino' ? $numPorConcluirH++ : $numPorConcluirM++;
                     $numPorConcluir++;
                     break;
                 default:
@@ -163,6 +163,8 @@ class SeguimientoAdminController extends Controller
             'privadoM' => 0,
             'publicoH' => 0,
             'privadoH' => 0,
+            'masculino' => 0,
+            'femenino' => 0,
             'iiH' => 0,
             'icH' => 0,
             'iqH' => 0,
@@ -189,22 +191,22 @@ class SeguimientoAdminController extends Controller
         foreach ($users as $user) {
             switch ($user->EST_carrera) {
                 case 'Contador Publico':
-                    $user->EST_sexo == 'MASCULINO' ? $datos['cpH']++ : $datos['cpM']++;
+                    $user->EST_sexo == 'Masculino' ? $datos['cpH']++ : $datos['cpM']++;
                     break;
                 case 'Ingenieria Civil':
-                    $user->EST_sexo == 'MASCULINO' ? $datos['icH']++ : $datos['icM']++;
+                    $user->EST_sexo == 'Masculino' ? $datos['icH']++ : $datos['icM']++;
                     break;
                 case 'Ingenieria Informatica':
-                    $user->EST_sexo == 'MASCULINO' ? $datos['iiH']++ : $datos['iiM']++;
+                    $user->EST_sexo == 'Masculino' ? $datos['iiH']++ : $datos['iiM']++;
                     break;
                 case 'Ingenieria en Industrias Alimentarias':
-                    $user->EST_sexo == 'MASCULINO' ? $datos['iiaH']++ : $datos['iiaM']++;
+                    $user->EST_sexo == 'Masculino' ? $datos['iiaH']++ : $datos['iiaM']++;
                     break;
                 case 'Ingenieria en Energias Renovables':
-                    $user->EST_sexo == 'MASCULINO' ? $datos['ierH']++ : $datos['ierM']++;
+                    $user->EST_sexo == 'Masculino' ? $datos['ierH']++ : $datos['ierM']++;
                     break;
                 case 'Ingenieria Quimica':
-                    $user->EST_sexo == 'MASCULINO' ? $datos['iqH']++ : $datos['iqM']++;
+                    $user->EST_sexo == 'Masculino' ? $datos['iqH']++ : $datos['iqM']++;
                     break;
 
                 default:
@@ -213,10 +215,21 @@ class SeguimientoAdminController extends Controller
             }
             switch ($user->ENR_sector) {
                 case 'Publico':
-                    $user->EST_sexo == 'MASCULINO' ? $datos['publicoH']++ : $datos['publicoM']++;
+                    $user->EST_sexo == 'Masculino' ? $datos['publicoH']++ : $datos['publicoM']++;
                     break;
                 case 'Privado':
-                    $user->EST_sexo == 'MASCULINO' ? $datos['privadoM']++ : $datos['privadoH']++;
+                    $user->EST_sexo == 'Masculino' ? $datos['privadoM']++ : $datos['privadoH']++;
+                    break;
+                default:
+                    # code...
+                    break;
+            }
+            switch ($user->EST_sexo) {
+                case 'Masculino':
+                    $user->EST_sexo == 'Masculino' ? $datos['masculino']++ : $datos['femenino']++;
+                    break;
+                case 'Femenino':
+                    $user->EST_sexo == 'Masculino' ? $datos['masculino']++ : $datos['femenino']++;
                     break;
                 default:
                     # code...
@@ -247,9 +260,9 @@ class SeguimientoAdminController extends Controller
         foreach ($users as $user) {
             if ($user->ENR_sector == 'Publico') {
 
-                $user->EST_sexo == 'MASCULINO' ? $hombresPublico++ : $mujeresPublico++;
+                $user->EST_sexo == 'Masculino' ? $hombresPublico++ : $mujeresPublico++;
             } else {
-                $user->EST_sexo == 'MASCULINO' ? $hombresPrivado++ : $mujeresPrivado++;
+                $user->EST_sexo == 'Masculino' ? $hombresPrivado++ : $mujeresPrivado++;
             }
         }
         $datos = [
@@ -278,9 +291,9 @@ class SeguimientoAdminController extends Controller
         foreach ($users as $user) {
             if ($user->ENR_sector == 'Publico') {
 
-                $user->EST_sexo == 'MASCULINO' ? $hombresPublico++ : $mujeresPublico++;
+                $user->EST_sexo == 'Masculino' ? $hombresPublico++ : $mujeresPublico++;
             } else {
-                $user->EST_sexo == 'MASCULINO' ? $hombresPrivado++ : $mujeresPrivado++;
+                $user->EST_sexo == 'Masculino' ? $hombresPrivado++ : $mujeresPrivado++;
             }
         }
         $datos = [
@@ -309,9 +322,9 @@ class SeguimientoAdminController extends Controller
         foreach ($users as $user) {
             if ($user->ENR_sector == 'Publico') {
 
-                $user->EST_sexo == 'MASCULINO' ? $hombresPublico++ : $mujeresPublico++;
+                $user->EST_sexo == 'Masculino' ? $hombresPublico++ : $mujeresPublico++;
             } else {
-                $user->EST_sexo == 'MASCULINO' ? $hombresPrivado++ : $mujeresPrivado++;
+                $user->EST_sexo == 'Masculino' ? $hombresPrivado++ : $mujeresPrivado++;
             }
         }
         $datos = [

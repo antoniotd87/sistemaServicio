@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('adminlte::page') 
 
 
 @section('title', 'Sistema Servicio')
@@ -13,13 +13,13 @@
 <form action="{{route('solicitudPrivado1.update', ['estudiante'=>$estudiante->id])}}" method="post" class="row text-center" id="solicitudPrivado1">
     @csrf
                     @method('PUT')
-<div class="form-group col-xs-12 col-sm-8 col-md-4 col-lg-5 col-xl-5">
+<div style="margin-left: auto;"">
     <label for="municipioDependencia">Lugar:</label>
     <input type="text" name="municipioDependencia" id="municipioDependencia" class="form-control text-center"
         placeholder="Ingrese el nombre del municipio" value="{{ isset($estudiante->seguimiento->entidades) ? $estudiante->seguimiento->entidades->entidad->ENR_municipio : '' }}">
 </div>
 
-<div class="form-group col-xs-12 col-sm-4 col-md-2 col-lg-2 col-xl-2 ">
+<div>
     <label for="municipioDependencia">Fecha:</label>
     <input type="text" name="municipioDependencia" id="municipioDependencia" class="form-control text-center"
         placeholder="Ingrese el nombre del municipio">

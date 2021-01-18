@@ -12,7 +12,7 @@
             <div class="col-6">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="m-0 text-dark text-center">Bajas: 0 Alumnos</h3>
+                        <h3 class="m-0 text-dark text-center">Bajas: {{ $datos[0]+$datos[1]+$datos[2]+$datos[3] }} Alumnos</h3>
                         <br>
                         <div class="chart">
                             <canvas id="barAlumnosCarrera"
@@ -32,19 +32,17 @@
                             <table class="table table-responsive w-100" id="table">
                                 <thead class="thead-dark">
                                     <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Nombre</th>
-                                        <th scope="col">Apellido</th>
-                                        <th scope="col">Telefono</th>
+                                        <th scope="col">ID</th>
+                                        <th scope="col" style="text-align: center;">Nombre</th>
+                                        <th scope="col" style="text-align: center;">Apellidos</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($users as $user)
                                     <tr>
-                                        <th scope="row"></th>
+                                        <td>{{$user->id}}</td>
                                         <td>{{$user->EST_nombre}}</td>
-                                        <td>{{$user->EST_apellidoPaterno}}</td>
-                                        <td>{{$user->EST_telefono}}</td>
+                                        <td>{{$user->EST_apellidoPaterno}} {{$user->EST_apellidoMaterno}}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

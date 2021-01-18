@@ -231,69 +231,6 @@ return [
     */
 
     'menu' => [        
-        ['header' => 'admiINSCRIPCIÓN'],
-        [
-            'text'    => 'admiSector Publico y Privado',
-            'icon'    => 'fas fa-fw fa-file-alt',
-            'submenu' => [
-                [
-                    'text' => 'admiSolicitud para tramitar SS',
-                    'url'=>'solicitudServicio'
-                ],
-                [
-                    'text' => 'admiDatos del Prestador',
-                    'url'  => 'datosPrestador'
-                ],
-                [
-                    'text' => 'admiRegistro de Autorizacion',
-                    'url'  => 'registroAutorizacion'
-                ],
-            ],
-        ],
-        [
-            'text'    => 'admiSector Privado',
-            'icon'    => 'fas fa-fw fa-file-alt',
-            'submenu' => [
-                [
-                    'text' => 'admiAnexo Tecnico',
-                    'url'  => 'anexoTecnico'
-                ],
-                [
-                    'text' => 'admiSolicitud Sector Privado',
-                    'icon'    => 'fas fa-share',
-                    'submenu' => [
-                        [
-                            'text' => 'admi  Para 1 Persona',
-                            'url'  => 'solicitudPrivado1'
-                        ],
-                        [
-                            'text' => 'admi  Para 2 Personas',
-                            'url'  => 'solicitudPrivado2'
-                        ],
-                        [
-                            'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-                            'text' => 'admi  Para 3 o mas Personas',
-                            'url'  => 'solicitudPrivado3'
-                        ],
-                    ]
-                ],
-            ],
-        ],
-        [
-            'text' => 'admiReportes',
-            'icon' => 'fas fa-fw fa-file-alt',
-            'submenu' => [
-                [
-                    'text' => 'admi  Bimestral',
-                    'url'  => 'bimestral'
-                ],
-                [
-                    'text' => 'admi  Trimestral',
-                    'url'  => 'trimestral'
-                ],
-            ]
-        ],
-
         ['header' => 'admiADMINISTRACION'],
         [
             'text' => 'admiSeguimiento',
@@ -346,12 +283,12 @@ return [
             'icon' => 'fas fa-fw fa-users',
             'submenu' => [
                 [
-                    'text' => 'admi  Ver Usuarios',
-                    'url'  => 'usuarios/ver'
-                ],
-                [
                     'text' => 'admi  Crear cuentas',
                     'url'  => 'usuarios/crear'
+                ],
+                [
+                    'text' => 'admi  Ver Usuarios',
+                    'url'  => 'usuarios/ver'
                 ],
                 [
                     'text' => 'admi  Recuperacion',

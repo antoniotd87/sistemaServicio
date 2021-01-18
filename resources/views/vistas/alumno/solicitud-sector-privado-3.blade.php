@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('adminlte::page') 
 
 
 @section('title', 'Sistema Servicio')
@@ -10,7 +10,7 @@
 @stop
 
 @section('content')
-    <form action="" class="row text-center" id="solicitudPrivado3">
+    <form action="{{route('solicitudPrivado3.update', ['estudiante'=>$estudiante->id])}}" class="row text-center" id="solicitudPrivado3">
         @include('vistas.alumno.form-solicitud-privado-3')
     </form>
 @stop

@@ -54,6 +54,7 @@ class EntidadReceptoraController extends Controller
         $entidadReceptora->ENR_fechaTermino = $request->terminoDependencia;
         $entidadReceptora->ENR_totalHoras = $request->horasDependencia;
         $entidadReceptora->ENR_estimulo = $request->estimuloDependencia;
+        $entidadReceptora->ENR_sector = $request->sectorDependencia;
         $entidadReceptora->save();
         $idER=$entidadReceptora->id;
         return $idER;
@@ -108,6 +109,7 @@ class EntidadReceptoraController extends Controller
         $entidadReceptora->ENR_fechaTermino = $request->terminoDependencia;
         $entidadReceptora->ENR_totalHoras = $request->horasDependencia;
         $entidadReceptora->ENR_estimulo = $request->estimuloDependencia;
+        $entidadReceptora->ENR_sector = $request->sectorDependencia;
         $entidadReceptora->save();
     }
 

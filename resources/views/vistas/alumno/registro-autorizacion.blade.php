@@ -7,6 +7,11 @@
     <h2 class="m-0 text-dark text-center">
         Solicitud Registro - Autorización
     </h2>
+    <!--<div style="width: 40px; height: 40px; margin-left: 1000px;">
+    <div>
+        <input type="image" name="" style="width: 50px; height: 30px;" src="https://comps.canstockphoto.com/question-mark-icon-special-green-square-clipart_csp50749917.jpg" onclick="location.href='vendor/adminlte/dist/docs/registroautorizacion.pdf'">
+</div>
+</div>-->
 @stop
 
 
@@ -103,6 +108,14 @@
                     <br>
                 </div>
 
+                <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
+                    <label for="sectorDependencia">Sector:</label>
+                    <select name="sectorDependencia" id="sectorDependencia" class="form-control text-center">
+                        <option value="{{$estudiante->EST_sector}}">Seleccionar</option>
+                        <option value="Publico">Publico</option>
+                        <option value="Privado">Privado</option>
+                    </select>
+                </div>
 
                 <div class="form-group col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-4">
                     <label for="nombreDependencia">Nombre de la entidad receptora:</label>

@@ -23,7 +23,7 @@ class Seguimiento extends Model
 
         //Crear estudiante o admin, una vez que se cree el usuario
         static::created(function ($seguimiento) {
-            $seguimiento->estado()->create();
+            $seguimiento->estado()->create(['STA_estado'=>'Inscrito']);
         });
     }
 

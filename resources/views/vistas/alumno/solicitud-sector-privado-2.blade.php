@@ -10,7 +10,7 @@
 @stop
 
 @section('content')
-    <form action="" class="row text-center" id="solicitudPrivado2">
+    <form action="{{route('solicitudPrivado2.update', ['estudiante'=>$estudiante->id])}}" class="row text-center" id="solicitudPrivado2">
         @include('vistas.alumno.form-solicitud-privado-2')
     </form>
 @stop

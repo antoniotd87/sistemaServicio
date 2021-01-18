@@ -15,6 +15,18 @@
         <form action="{{route('anexoTecnico.update', ['estudiante'=>$estudiante->id])}}" method="post" class="row text-center" id="frmAnexoTecnico">
             @csrf
                 @method('PUT')
+            
+            <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
+                    <label for="inicioDependencia">Fecha de inicio:</label>
+                    <input type="date" name="inicioDependencia" id="inicioDependencia"
+                        class="form-control text-center" value="{{ isset($estudiante->seguimiento->entidades) ? $estudiante->seguimiento->entidades->entidad->ENR_fechaInicio : '' }}">
+                </div>
+
+                <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
+                    <label for="terminoDependencia">Fecha de termino:</label>
+                    <input type="date" name="terminoDependencia" id="terminoDependencia"
+                        class="form-control text-center" value="{{ isset($estudiante->seguimiento->entidades) ? $estudiante->seguimiento->entidades->entidad->ENR_fechaTermino : '' }}">
+                </div>
             <div class="form-group col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-4">
                 <label for="nombreDependencia">Dependencia ejecutora:</label>
                 <input type="text" name="nombreDependencia" id="nombreDependencia" class="form-control text-center"

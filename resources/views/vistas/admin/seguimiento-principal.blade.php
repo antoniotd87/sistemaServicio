@@ -117,7 +117,7 @@
                     pointStrokeColor: "rgba(60,141,188,1)",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(60,141,188,1)",
-                    data: [{{$datos['hombres'][0]}}, {{$datos['hombres'][1]}}, {{$datos['hombres'][2]}}, {{$datos['hombres'][3]}}],
+                    data: [{{$datos['hombres'][0]}}, {{$datos['hombres'][1]}}, {{$datos['hombres'][3]}}, {{$datos['hombres'][2]}}],
                 },
                 {
                     label: "Mujeres",
@@ -128,7 +128,7 @@
                     pointStrokeColor: "#c1c7d1",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: [{{$datos['mujeres'][0]}}, {{$datos['mujeres'][1]}}, {{$datos['mujeres'][2]}}, {{$datos['mujeres'][3]}}],
+                    data: [{{$datos['mujeres'][0]}}, {{$datos['mujeres'][1]}}, {{$datos['mujeres'][3]}}, {{$datos['mujeres'][2]}}],
                 },
             ],
         };

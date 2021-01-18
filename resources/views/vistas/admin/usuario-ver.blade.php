@@ -14,19 +14,23 @@
                     <table class="table table-responsive w-100" id="table">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">Correo</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Apellidos</th>
-                                <th scope="col">Telefono</th>
+                                <th scope="col" style="text-align: center;">Nombre de Usuario</th>
+                                <th scope="col" style="text-align: center;">Correo</th>
+                                <th scope="col" style="text-align: center;">Contraseña</th>
+                                <th scope="col" style="text-align: center;">Tipo</th>
+                                <th scope="col" style="text-align: center;">Editar</th>
+                                <th scope="col" style="text-align: center;">Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($estudiantes as $estudiante)
                             <tr>
-                                <td>{{$estudiante->usuario->email}}</td>
-                                <td>{{$estudiante->EST_nombre}}</td>
-                                <td>{{$estudiante->EST_apellidoPaterno}}</td>
-                                <td>{{$estudiante->EST_telefono}}</td>
+                                <td style="text-align: center;">{{$estudiante->usuario->name}}</td>
+                                <td style="text-align: center;">{{$estudiante->usuario->email}}</td>
+                                <td style="text-align: center;">{{$estudiante->usuario->password}}</td>
+                                <td style="text-align: center;">{{$estudiante->usuario->tipo}}</td>
+                                <td><a href="#">Editar</a></td>
+                                <td><a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="#">Eliminar</a></td>
                             </tr>
                             @endforeach
                         </tbody>
