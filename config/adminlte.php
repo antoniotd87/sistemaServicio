@@ -276,7 +276,7 @@ return [
             'text' => 'admiConstancias',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-file-contract',
-            'url' => 'constancias/generar'
+            'url' => 'constancias'
         ],
         [
             'text' => 'admiUsuarios',

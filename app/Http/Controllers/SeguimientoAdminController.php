@@ -72,7 +72,6 @@ class SeguimientoAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**
@@ -112,19 +111,19 @@ class SeguimientoAdminController extends Controller
         foreach ($users as $user) {
             switch ($user->STA_estado) {
                 case 'Inscrito':
-                    $user->EST_sexo == 'MASCULINO' ? $numInscritosH++ : $numInscritosM++;
+                    $user->EST_sexo == 'Masculino' ? $numInscritosH++ : $numInscritosM++;
                     $numInscritos++;
                     break;
                 case 'Baja':
-                    $user->EST_sexo == 'MASCULINO' ? $numBajasH++ : $numBajasM++;
+                    $user->EST_sexo == 'Masculino' ? $numBajasH++ : $numBajasM++;
                     $numBajas++;
                     break;
                 case 'Liberado':
-                    $user->EST_sexo == 'MASCULINO' ? $numLiberadosH++ : $numLiberadosM++;
+                    $user->EST_sexo == 'Masculino' ? $numLiberadosH++ : $numLiberadosM++;
                     $numLiberados++;
                     break;
                 case 'Por Concluir':
-                    $user->EST_sexo == 'MASCULINO' ? $numPorConcluirH++ : $numPorConcluirM++;
+                    $user->EST_sexo == 'Masculino' ? $numPorConcluirH++ : $numPorConcluirM++;
                     $numPorConcluir++;
                     break;
                 default:
@@ -303,6 +302,7 @@ class SeguimientoAdminController extends Controller
         ];
         //return $estudiantes;
         return view('vistas.admin.seguimiento-liberaciones', compact('datos', 'users'));
+        
     }
     public function porConcluir()
     {
@@ -314,7 +314,7 @@ class SeguimientoAdminController extends Controller
             ->select('estudiantes.*', 'entidad_receptoras.ENR_sector')
             ->where('estados.STA_estado', '=', 'POR CONCLUIR')
             ->get();
-        $hombresPublico = 0;
+        $hombresPublico = 0; 
         $mujeresPublico = 0;
         $hombresPrivado = 0;
         $mujeresPrivado = 0;

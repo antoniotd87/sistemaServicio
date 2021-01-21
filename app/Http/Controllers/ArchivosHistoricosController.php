@@ -38,18 +38,18 @@ class ArchivosHistoricosController extends Controller
     {
 
         $data = request()->validate([
-            'name' => 'required',
-            'archivo' => 'required'
+            'nombreAlumno' => 'required',
+            'carreraAlumno' => 'required'
         ]);
-        $ruta_imagen = $request['archivo']->store('upload-archivos-historicos', 'public');
+        
 
-        $archivosHistoricos = new ArchivosHistoricos();
-        $archivosHistoricos->AHT_nombre = $request->name;
-        $archivosHistoricos->AHT_ruta = $ruta_imagen;
-        $archivosHistoricos->save();
+        $estudiantes = new Estudiante();
+        $estudiantes->AHT_nombre = $request->nombreAlumno;
+        $estudiantes->AHT_ruta = $request->carreraAlumno;
+        $estudiantes->save();
 
-        $datos = ArchivosHistoricos::all();
-        return view('vistas.admin.archivos-ver', compact('datos'));
+        $datos = Estudiante::all();
+        return view('vistas.admin.constancia-generar', compact('datos'));
     }
 
     /**

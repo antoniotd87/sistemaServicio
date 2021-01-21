@@ -79,7 +79,10 @@ Route::get('/seguimiento/porConcluir',[App\Http\Controllers\SeguimientoAdminCont
 
 Route::resource('archivos', ArchivosHistoricosController::class);
 
-Route::get('/constancias/generar', function() {return view('vistas.admin.constancias-generar');});
+Route::get('/constancias',[App\Http\Controllers\EstudianteController::class, 'constancias']);
+
+Route::get('/constancias/pdf/{id}', [App\Http\Controllers\EstudianteController::class, 'pdf'])->name('estudiante_pdf');
+
 Route::get('/seguimiento/porConcluir',[App\Http\Controllers\SeguimientoAdminController::class, 'porConcluir']);
 
 Route::get('/usuarios/importar',[App\Http\Controllers\UsuarioAdminController::class,'import']);

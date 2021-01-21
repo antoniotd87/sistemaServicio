@@ -49,6 +49,9 @@
     .salto{
         margin-bottom: 25pt;
     }
+    .salt{
+        margin-bottom: 15pt;
+    }
     .saltos{
         margin-bottom: 5pt;
     }

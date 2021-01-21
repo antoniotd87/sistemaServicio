@@ -109,18 +109,7 @@
         var areaChartData = {
             labels: ["Inscrito", "Baja", "Por Concluir", "Liberacion"],
             datasets: [{
-                    label: "Hombres",
-                    backgroundColor: "rgba(60,141,188,0.9)",
-                    borderColor: "rgba(60,141,188,0.8)",
-                    pointRadius: false,
-                    pointColor: "#3b8bba",
-                    pointStrokeColor: "rgba(60,141,188,1)",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(60,141,188,1)",
-                    data: [{{$datos['hombres'][0]}}, {{$datos['hombres'][1]}}, {{$datos['hombres'][3]}}, {{$datos['hombres'][2]}}],
-                },
-                {
-                    label: "Mujeres",
+                label: "Mujeres",
                     backgroundColor: "rgba(210, 214, 222, 1)",
                     borderColor: "rgba(210, 214, 222, 1)",
                     pointRadius: false,
@@ -129,6 +118,19 @@
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(220,220,220,1)",
                     data: [{{$datos['mujeres'][0]}}, {{$datos['mujeres'][1]}}, {{$datos['mujeres'][3]}}, {{$datos['mujeres'][2]}}],
+                    
+                },
+                {
+                    label: "Hombres",
+                    backgroundColor: "rgba(60,141,188,0.9)",
+                    borderColor: "rgba(60,141,188,0.8)",
+                    pointRadius: false,
+                    pointColor: "#3b8bba",
+                    pointStrokeColor: "rgba(60,141,188,1)",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(60,141,188,1)",
+                     data: [{{$datos['hombres'][0]}}, {{$datos['hombres'][1]}}, {{$datos['hombres'][2]}}, {{$datos['hombres'][3]}}],
+                    
                 },
             ],
         };
