@@ -13,6 +13,8 @@ use App\Http\Controllers\EntidadReceptoraController;
 use App\Http\Controllers\JefeInmediatoController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\EntidadController;
+use App\Models\User;
+use App\Notifications\Mensaje;
 
 class SolicitudServicioController extends Controller
 {
@@ -102,13 +104,17 @@ class SolicitudServicioController extends Controller
         if (isset($estudiante->seguimiento->entidades)) {
             //Obtenemos el modelo que queremos editar y llamamos al metodo en el controller
             $entidadReceptoraModel = $estudiante->seguimiento->entidades->entidad;
-            $entidadReceptora->update($request,$entidadReceptoraModel);
+            $entidadReceptora->update($request, $entidadReceptoraModel);
 
             $jefeInmediatoModel = $estudiante->seguimiento->entidades->jefeInmediatos;
-            $jefeInmediato->update($request,$jefeInmediatoModel);
+            $jefeInmediato->update($request, $jefeInmediatoModel);
 
             $areaModel = $estudiante->seguimiento->entidades->area;
-            $area->update($request,$areaModel);
+            $area->update($request, $areaModel);
+            // Envio de correos
+            $admin = User::find(1);
+            $mensaje = 'Creacion de la solicitud de servicio social';
+            $admin->notify(new Mensaje($estudiante, $mensaje,'SolicitudServicio'));
         } else {
             //Si no hay relaciones, se crean las tablas y se relacionan con el estudiante
             //Se llama al metodo store de el controlador para poder insertar el registro
@@ -129,6 +135,11 @@ class SolicitudServicioController extends Controller
             //Se actualiza la tabla seguimiento
             $estudiante->seguimiento->update(['entidad_id' => $idE]);
             //$estudiante->seguimiento->e();
+
+            // Envio de mensaje
+            $admin = User::find(1);
+            $mensaje = 'Creacion de la solicitud de servicio social';
+            $admin->notify(new Mensaje($estudiante, $mensaje,'SolicitudServicio'));
         }
 
         //Creacion del PDF

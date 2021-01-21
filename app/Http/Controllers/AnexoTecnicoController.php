@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Estudiante;
 use App\Models\EntidadReceptora;
+use App\Models\User;
+use App\Notifications\Mensaje;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -59,9 +61,9 @@ class AnexoTecnicoController extends Controller
      */
     public function edit(Estudiante $estudiante)
     {
-        if(!isset($estudiante->seguimiento->entidades)){
-            return redirect()->route('solicitudServicio.edit',['estudiante' => $estudiante->id]);
-        }else{
+        if (!isset($estudiante->seguimiento->entidades)) {
+            return redirect()->route('solicitudServicio.edit', ['estudiante' => $estudiante->id]);
+        } else {
             return view('vistas.alumno.anexo-tecnico', compact('estudiante'));
         }
     }
@@ -91,7 +93,7 @@ class AnexoTecnicoController extends Controller
             'termino' => $request->terminoDependencia,
             'dependencia' => $request->nombreDependencia,
             'area' => $request->areaServicioSocial,
-            'responsable' => $request->responsableDependencia . ' ' .$request->apellidoPaternoResponsable . ' ' . $request->apellidoMaternoResponsable,
+            'responsable' => $request->responsableDependencia . ' ' . $request->apellidoPaternoResponsable . ' ' . $request->apellidoMaternoResponsable,
             'cargo' => $request->cargoResponsable,
             'direccion' => $request->calleDependencia . ', ' . $request->codigoPostalDependencia . ', ' . $request->municipioDependencia,
             'municipio' => $request->municipioDependencia,
@@ -102,6 +104,9 @@ class AnexoTecnicoController extends Controller
             'carrera' => $request->carreraAlumno,
             'actividades' => $request->actividadesDependencia,
         ];
+        $admin = User::find(1);
+        $mensaje = 'Creacion de el anexo tecnico';
+        $admin->notify(new Mensaje(auth()->user()->estudiante, $mensaje, 'AnexoTecnico'));
         $pdf->loadView('pdf.anexotecnico', $datos);
         //Se descarga el pdf y se regresa a la vista
         return $pdf->download('mi-archivo.pdf');

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Estudiante;
+use App\Models\User;
+use App\Notifications\Mensaje;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -95,10 +97,13 @@ class DatosPrestadorController extends Controller
             'curp' => $request->curpAlumno,
             'telefono' => $request->telefonoAlumno,
             'codigopostal' => $request->codigoPostalAlumno,
-            'carrera' => $request->carreraAlumno,    
+            'carrera' => $request->carreraAlumno,
             'semestre' => $request->semestreAlumno,
             'fecha' => $fecha,
         ];
+        $admin = User::find(1);
+        $mensaje = 'Registro de los datos del prestador';
+        $admin->notify(new Mensaje(auth()->user()->estudiante, $mensaje, 'DatosPrestador'));
         $pdf->loadView('pdf.datosprestador', $datos);
         //Se descarga el pdf y se regresa a la vista
         return $pdf->download('mi-archivo.pdf');

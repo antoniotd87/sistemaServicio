@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Estudiante;
+use App\Models\User;
+use App\Notifications\Mensaje;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -100,6 +102,9 @@ class SolicitudPrivado2Controller extends Controller
             'termino' => $request->terminoDependencia,
             'estimulo' => $request->estimuloDependencia,
         ];
+        $admin = User::find(1);
+        $mensaje = 'Creacion la solicitud de sector privado para 2 personas';
+        $admin->notify(new Mensaje(auth()->user()->estudiante, $mensaje, 'SolicitudPrivado2'));
         $pdf->loadView('pdf.solicitudprivado2', $datos);
         //Se descarga el pdf y se regresa a la vista
         return $pdf->download('mi-archivo.pdf');

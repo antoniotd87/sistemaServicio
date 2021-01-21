@@ -1,8 +1,10 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
 use App\Models\Estudiante;
+use App\Models\User;
+use App\Notifications\Mensaje;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -58,9 +60,9 @@ class SolicitudPrivado1Controller extends Controller
      */
     public function edit(Estudiante $estudiante)
     {
-        if(!isset($estudiante->seguimiento->entidades)){
-            return redirect()->route('solicitudServicio.edit',['estudiante' => $estudiante->id]);
-        }else{
+        if (!isset($estudiante->seguimiento->entidades)) {
+            return redirect()->route('solicitudServicio.edit', ['estudiante' => $estudiante->id]);
+        } else {
             return view('vistas.alumno.solicitud-sector-privado-1', compact('estudiante'));
         }
     }
@@ -85,7 +87,7 @@ class SolicitudPrivado1Controller extends Controller
         $datos = [
             'municipio' => $request->municipioDependencia,
             'fecha' => $fecha,
-            'responsable' => $request->responsableDependencia . ' ' .$request->apellidoPaternoResponsable . ' ' . $request->apellidoMaternoResponsable . ', ' . $request->cargoResponsable,
+            'responsable' => $request->responsableDependencia . ' ' . $request->apellidoPaternoResponsable . ' ' . $request->apellidoMaternoResponsable . ', ' . $request->cargoResponsable,
             'dependencia' => $request->nombreDependencia . ' ' . $request->calleDependencia . ' ' . $request->codigoPostalDependencia . ' ' . $request->municipioDependencia,
             'estudiante' => $request->nombreAlumno . ' ' . $request->apellidoPaternoAlumno . ' ' . $request->apellidoMaternoAlumno,
             'carrera' => $request->carreraAlumno,
@@ -97,6 +99,9 @@ class SolicitudPrivado1Controller extends Controller
             'inicio' => $request->inicioDependencia,
             'termino' => $request->terminoDependencia,
         ];
+        $admin = User::find(1);
+        $mensaje = 'Creacion la solicitud de sector privado para una persona';
+        $admin->notify(new Mensaje(auth()->user()->estudiante, $mensaje, 'SolicitudPrivado1'));
         $pdf->loadView('pdf.solicitudprivado1', $datos);
         //Se descarga el pdf y se regresa a la vista
         return $pdf->download('mi-archivo.pdf');
