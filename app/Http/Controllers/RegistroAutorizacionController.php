@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\EntidadReceptoraController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\EntidadController;
+use App\Models\User;
+use App\Notifications\Mensaje;
 
 class RegistroAutorizacionController extends Controller
 {
@@ -53,7 +55,7 @@ class RegistroAutorizacionController extends Controller
      */
     public function show($id)
     {
-        
+
     }
 
     /**
@@ -144,6 +146,9 @@ class RegistroAutorizacionController extends Controller
             'termino' => $request->terminoDependencia,
             'horas' => $request->horasDependencia,
         ];
+        $admin = User::find(1);
+        $mensaje = 'Creacion de registro autorizacion';
+        $admin->notify(new Mensaje(auth()->user()->estudiante, $mensaje, 'RegistroAutorizacion'));
         $pdf->loadView('pdf.registroautorizacion', $datos);
         //Se descarga el pdf y se regresa a la vista
         return $pdf->download('mi-archivo.pdf');

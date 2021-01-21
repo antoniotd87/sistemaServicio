@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\NotificacionControler;
 use App\Http\Controllers\UsuarioAdminController;
 use Illuminate\Support\Facades\Route;
 
@@ -91,3 +92,7 @@ Route::get('/usuarios/crear',[App\Http\Controllers\UsuarioAdminController::class
 Route::post('/usuarios/crear',[App\Http\Controllers\UsuarioAdminController::class,'store'])->name('usuarios.store');
 Route::put('/usuarios/recuperar',[App\Http\Controllers\UsuarioAdminController::class,'update'])->name('usuarios.update');
 Route::get('/usuarios/recuperar',[App\Http\Controllers\UsuarioAdminController::class,'recuperar']);
+
+Route::get('notificacion',[App\Http\Controllers\NotificacionControler::class,'index'])->name('notificacion.index');
+Route::get('notificacion/${notificacion}',[App\Http\Controllers\NotificacionControler::class,'showDocument'])->name('notificacion.ver');
+Route::put('notificacion/${id}',[App\Http\Controllers\NotificacionControler::class,'sendMessage'])->name('notificacion.mensaje');

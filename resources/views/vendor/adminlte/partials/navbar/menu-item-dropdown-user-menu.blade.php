@@ -13,48 +13,42 @@
     @php($profile_url = $profile_url ? url($profile_url) : '')
     @php($logout_url = $logout_url ? url($logout_url) : '')
 @endif
+@if (Auth::user()->tipo == 'admin')
+<style>
+    .navbar-badge{
+        font-size: 0.9rem;
+        font-weight: 700;
+    }
+</style>
 <li class="nav-item dropdown">
     <a class="nav-link" data-toggle="dropdown" href="#">
         <i class="far fa-bell"></i>
-        <span class="badge badge-primary navbar-badge">15</span>
+        <span class="badge badge-primary navbar-badge">{{Auth::user()->unreadNotifications->count()}}</span>
     </a>
     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-        <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-                {{-- <img src="dist/img/user1-128x128.jpg" alt="User Avatar"
-                    class="img-size-50 mr-3 img-circle"> --}}
-                <div class="media-body">
-                    <h3 class="dropdown-item-title">
-                        Juan
-                    </h3>
-                    <p class="text-sm">Creo el registro autorizacion</p>
-                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> Hace 10 minutos</p>
+        @foreach (Auth::user()->unreadNotifications()->paginate(3) as $item)
+            <div class="dropdown-item">
+                <!-- Message Start -->
+                <div class="media">
+                    <div class="media-body">
+                        <div class="d-flex justify-content-between">
+                            <h3 class="dropdown-item-title">
+                                {{{$item['data']['nombre']}}}
+                            </h3>
+                            {{-- <button type="button" class="btn btn-danger btn-sm">x</button> --}}
+                        </div>
+                        <p class="text-sm">{{{$item['data']['mensaje']}}}</p>
+                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> {{$item->created_at->diffForHumans()}}</p>
+                    </div>
                 </div>
+                <!-- Message End -->
             </div>
-            <!-- Message End -->
-        </a>
-        <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-                {{-- <img src="dist/img/user1-128x128.jpg" alt="User Avatar"
-                    class="img-size-50 mr-3 img-circle"> --}}
-                <div class="media-body">
-                    <h3 class="dropdown-item-title">
-                        Jose
-                    </h3>
-                    <p class="text-sm">Registro sus datos de prestador</p>
-                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> Hace 4 horas</p>
-                </div>
-            </div>
-            <!-- Message End -->
-        </a>
-        <div class="dropdown-divider"></div>
-        {{-- <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        --}}
+            <div class="dropdown-divider"></div>
+        @endforeach
+        <a href="{{ route('notificacion.index') }}" class="dropdown-item dropdown-footer">Mirar todas las notificaciones</a>
     </div>
 </li>
+@endif
 <li class="nav-item dropdown user-menu">
 
     {{-- User menu toggler --}}
@@ -135,8 +129,8 @@
 
 </li>
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // alert('hola mundo');
-    });
+    document.addEventListener('DOMContentLoaded',()=>{
+        // alert('hola 3')
+    })
 
 </script>
