@@ -12,9 +12,6 @@
                 </div>
 @stop
 @section('content')
-    @php
-        // $administrador = !isset($administrador)?$administrador:Auth::user();
-    @endphp
     <div class="row">
         <div class="col-12">
             <form action="{{route('informacion.update', ['administrador'=>$administrador])}}" method="post" class="row text-center">
@@ -38,7 +35,7 @@
                 <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
                     <label for="correoAdmin">Correo:</label>
                     <input type="text" name="correoAdmin" id="correoAdmin" class="form-control text-center"
-                        placeholder="Ingrese su nombre" value="{{$administrador->UA_correo}}">
+                        placeholder="Ingrese su nombre" value="{{$administrador->usuario->email}}">
                 </div>
                 <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
                     <label for="rolAdmin">Rol:</label>
@@ -59,4 +56,3 @@
         </div>
         </div>
 @stop
- 

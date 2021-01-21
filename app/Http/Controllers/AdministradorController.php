@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
@@ -94,7 +94,7 @@ class AdministradorController extends Controller
     }
     public function info()
     {
-        $administrador = auth()->user();
+        $administrador = auth()->user()->administrador;
         return view('vistas.admin.acompletar-informacion', compact('administrador'));
     }
 }
