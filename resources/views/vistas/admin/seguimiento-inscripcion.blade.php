@@ -235,7 +235,7 @@
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col" style="text-align: center;">ID</th>
-                                <th scope="col" style="text-align: center;">Prestador de Servicio Social</th>
+                                <th scope="col" style="text-align: center;">Alumno</th>
                                 <th scope="col" style="text-align: center;">Estado</th>
                                 <th scope="col" style="text-align: center;">Creacion</th>
                                 <th scope="col" style="text-align: center;">Cambio</th>

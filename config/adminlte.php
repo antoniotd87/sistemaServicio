@@ -233,6 +233,11 @@ return [
     'menu' => [
         ['header' => 'admiADMINISTRACION'],
         [
+            'text' => 'admi  Información',
+            'icon' => 'fas fa-fw fa-file-contract',
+            'url' => 'informacion'
+        ],
+        [
             'text' => 'admiSeguimiento',
             'icon' => 'fas fa-fw fa-chart-area',
             'submenu' => [

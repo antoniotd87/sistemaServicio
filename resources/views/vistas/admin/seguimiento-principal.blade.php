@@ -129,7 +129,7 @@
                     pointStrokeColor: "rgba(60,141,188,1)",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(60,141,188,1)",
-                     data: [{{$datos['hombres'][0]}}, {{$datos['hombres'][1]}}, {{$datos['hombres'][2]}}, {{$datos['hombres'][3]}}],
+                     data: [{{$datos['hombres'][0]}}, {{$datos['hombres'][1]}}, {{$datos['hombres'][3]}}, {{$datos['hombres'][2]}}],
                     
                 },
             ],

@@ -1,9 +1,11 @@
-<?php
+<?php 
 
 namespace App\Http\Controllers;
 
 use App\Models\Administrador;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdministradorController extends Controller
 {
@@ -57,7 +59,7 @@ class AdministradorController extends Controller
      */
     public function edit(Administrador $administrador)
     {
-        //
+         return view('vistas.admin.acompletar-informacion', compact('administrador'));
     }
 
     /**
@@ -69,7 +71,15 @@ class AdministradorController extends Controller
      */
     public function update(Request $request, Administrador $administrador)
     {
-        //
+        $administrador->update([
+            'UA_nombre' => $request->nombreAdmin,
+            'UA_apellidoPaterno' => $request->apellidoPaternoAdmin,
+            'UA_apellidoMaterno' => $request->apellidoMaternoAdmin,
+            'UA_correo' => $request->correoAdmin,
+            'UA_rol' => $request->rolAdmin,
+            'UA_cargo' => $request->cargoAdmin,
+        ]);
+        return redirect('/informacion');
     }
 
     /**
@@ -81,5 +91,10 @@ class AdministradorController extends Controller
     public function destroy(Administrador $administrador)
     {
         //
+    }
+    public function info()
+    {
+        $administrador = auth()->user();
+        return view('vistas.admin.acompletar-informacion', compact('administrador'));
     }
 }

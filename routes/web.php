@@ -72,6 +72,11 @@ Route::put('/trimestral/{estudiante}', [App\Http\Controllers\ReporteTrimestralCo
 //Route::resource('estudiantes','EstudiantesController');
 
 //Rutas Administradores
+Route::get('/informacion/{amdinistrador}', [App\Http\Controllers\AdministradorController::class, 'edit'])->name('informacion.edit');
+Route::put('/informacion/{administrador}', [App\Http\Controllers\AdministradorController::class, 'update'])->name('informacion.update');
+Route::get('/informacion', [App\Http\Controllers\AdministradorController::class, 'info'])->name('informacion.info');
+
+
 Route::get('/seguimiento/principal',[App\Http\Controllers\SeguimientoAdminController::class, 'principal']);
 Route::get('/seguimiento/inscripcion',[App\Http\Controllers\SeguimientoAdminController::class, 'inscripcion']);
 Route::get('/seguimiento/bajas',[App\Http\Controllers\SeguimientoAdminController::class, 'baja']);
