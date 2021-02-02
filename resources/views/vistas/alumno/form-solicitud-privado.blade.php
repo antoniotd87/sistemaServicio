@@ -1,4 +1,4 @@
-@extends('adminlte::page') 
+@extends('adminlte::page')
 
 
 @section('title', 'Sistema Servicio')
@@ -133,7 +133,7 @@
         <p class="m-0 mt-2"> del Tecnologico de Estudios Superiores de San Felipe del Progreso, para que realice su
             Servicio social en la empresa a mi cargo, en el área de </p>
     </div>
-    
+
     <div class="mr-2 mb-3 flex-grow-1">
         <input type="text" name="areaServicioSocial" id="areaServicioSocial" class="form-control text-center"
             placeholder="Ingrese el nombre del area" value="{{ isset($estudiante->seguimiento->entidades) ? $estudiante->seguimiento->entidades->area->ARA_nombre : '' }}">
@@ -211,6 +211,7 @@
     <div class="col-12 row d-flex justify-content-center pr-0 mt-3">
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 pr-0">
         <input type="submit" value="Enviar" class="btn btn-primary btn-block btn-lg ml-1">
+        <a href="{{ route('solicitudPrivado1.imprimir', ['estudiante'=>$estudiante]) }}" target="_blank" class="btn btn-info btn-block">Imprimir</a>
 </div>
 </form>
 @stop

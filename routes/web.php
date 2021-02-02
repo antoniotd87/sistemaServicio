@@ -40,26 +40,31 @@ Route::get('/perfil/{administrador}/admin', [App\Http\Controllers\AdministradorC
 
 Route::get('/solicitudServicio/{estudiante}', [App\Http\Controllers\SolicitudServicioController::class, 'edit'])->name('solicitudServicio.edit');
 Route::put('/solicitudServicio/{estudiante}', [App\Http\Controllers\SolicitudServicioController::class, 'update'])->name('solicitudServicio.update');
-
+Route::get('/solicitudServicio/imprimir/{estudiante}', [App\Http\Controllers\PDFController::class, 'solicitudServicio'])->name('solicitudServicio.imprimir');
 
 Route::get('/datosPrestador/{estudiante}', [App\Http\Controllers\DatosPrestadorController::class, 'edit'])->name('datosPrestador.edit');
 Route::put('/datosPrestador/{estudiante}', [App\Http\Controllers\DatosPrestadorController::class, 'update'])->name('datosPrestador.update');
-
+Route::get('/datosPrestador/imprimir/{estudiante}', [App\Http\Controllers\PDFController::class, 'datosPrestador'])->name('datosPrestador.imprimir');
 
 Route::get('/registroAutorizacion/{estudiante}', [App\Http\Controllers\RegistroAutorizacionController::class, 'edit'])->name('registroAutorizacion.edit');
 Route::put('/registroAutorizacion/{estudiante}', [App\Http\Controllers\RegistroAutorizacionController::class, 'update'])->name('registroAutorizacion.update');
+Route::get('/registroAutorizacion/imprimir/{estudiante}', [App\Http\Controllers\PDFController::class, 'registroAutorizacion'])->name('registroAutorizacion.imprimir');
 
 Route::get('/anexoTecnico/{estudiante}', [App\Http\Controllers\AnexoTecnicoController::class, 'edit'])->name('anexoTecnico.edit');
 Route::put('/anexoTecnico/{estudiante}', [App\Http\Controllers\AnexoTecnicoController::class, 'update'])->name('anexoTecnico.update');
+Route::get('/anexoTecnico/imprimir/{estudiante}', [App\Http\Controllers\PDFController::class, 'anexoTecnico'])->name('anexoTecnico.imprimir');
 
 Route::get('/solicitudPrivado1/{estudiante}', [App\Http\Controllers\SolicitudPrivado1Controller::class, 'edit'])->name('solicitudPrivado1.edit');
 Route::put('/solicitudPrivado1/{estudiante}', [App\Http\Controllers\SolicitudPrivado1Controller::class, 'update'])->name('solicitudPrivado1.update');
+Route::get('/solicitudPrivado1/imprimir/{estudiante}', [App\Http\Controllers\PDFController::class, 'privado1'])->name('solicitudPrivado1.imprimir');
 
 Route::get('/solicitudPrivado2/{estudiante}', [App\Http\Controllers\SolicitudPrivado2Controller::class, 'edit'])->name('solicitudPrivado2.edit');
 Route::put('/solicitudPrivado2/{estudiante}', [App\Http\Controllers\SolicitudPrivado2Controller::class, 'update'])->name('solicitudPrivado2.update');
+Route::get('/solicitudPrivado2/imprimir/{estudiante}', [App\Http\Controllers\PDFController::class, 'privado2'])->name('solicitudPrivado2.imprimir');
 
 Route::get('/solicitudPrivado3/{estudiante}', [App\Http\Controllers\SolicitudPrivado3Controller::class, 'edit'])->name('solicitudPrivado3.edit');
 Route::put('/solicitudPrivado3/{estudiante}', [App\Http\Controllers\SolicitudPrivado3Controller::class, 'update'])->name('solicitudPrivado3.update');
+Route::get('/solicitudPrivado3/imprimir/{estudiante}', [App\Http\Controllers\PDFController::class, 'privado3'])->name('solicitudPrivado3.imprimir');
 
 Route::get('/bimestral/{estudiante}', [App\Http\Controllers\ReporteBimestralController::class, 'edit'])->name('bimestral.edit');
 Route::put('/bimestral/{estudiante}', [App\Http\Controllers\ReporteBimestralController::class, 'update'])->name('bimestral.update');

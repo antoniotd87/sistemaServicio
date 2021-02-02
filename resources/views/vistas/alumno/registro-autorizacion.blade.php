@@ -259,6 +259,7 @@
                 <div class="col-12 row d-flex justify-content-center pr-0 mt-3">
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 pr-0">
                         <input type="submit" value="Enviar" class="btn btn-primary btn-block btn-lg ml-1">
+                        <a href="{{ route('registroAutorizacion.imprimir', ['estudiante'=>$estudiante]) }}" target="_blank" class="btn btn-info btn-block">Imprimir</a>
                     </div>
                 </div>
             </form>

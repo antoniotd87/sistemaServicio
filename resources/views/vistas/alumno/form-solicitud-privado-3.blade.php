@@ -146,7 +146,7 @@
     <div class="mr-2 mb-3 flex-grow-1">
         <input type="date" name="terminoDependencia" id="terminoDependencia" class="form-control text-center" value="{{ isset($estudiante->seguimiento->entidades) ? $estudiante->seguimiento->entidades->entidad->ENR_fechaTermino : '' }}">
     </div>
-    
+
     <div class="mr-2 mb-3">
         <p class="m-0 mt-2"> . Así mismo el alumno asistirá durante el periodo vacacional cubriendo el mismo horario. </p>
     </div>
@@ -278,6 +278,7 @@
     <div class="col-12 row d-flex justify-content-center pr-0 mt-3">
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 pr-0">
         <input type="submit" value="Enviar" class="btn btn-primary btn-block btn-lg ml-1">
+        {{-- <a href="{{ route('solicitudPrivado3.imprimir', ['estudiante'=>$estudiante]) }}" target="_blank" class="btn btn-info btn-block">Imprimir</a> --}}
 </div>
 </div>
 </form>
