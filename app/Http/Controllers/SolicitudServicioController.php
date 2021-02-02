@@ -80,21 +80,9 @@ class SolicitudServicioController extends Controller
      */
     public function update(Request $request, Estudiante $estudiante)
     {
-        $estudiante->update([
-            'EST_numeroCuenta' => $request->cuentaAlumno,
-            'EST_apellidoPaterno' => $request->apellidoPaternoAlumno,
-            'EST_apellidoMaterno' => $request->apellidoMaternoAlumno,
-            'EST_nombre' => $request->nombreAlumno,
-            'EST_correo' => $request->correoAlumno,
-            'EST_edad' => $request->edadAlumno,
-            'EST_carrera' => $request->carreraAlumno,
-            'EST_porcentajeCreditos' => $request->creditosAlumno,
-            'EST_grupo' => $request->grupoAlumno,
-            'EST_semestre' => $request->semestreAlumno,
-            'EST_domicilio' => $request->domicilioAlumno,
-            'EST_telefono' => $request->telefonoAlumno,
-        ]);
         //Instanciamos a los controladores para poder utilizarlos
+        $estudianteController = new EstudianteController();
+        $estudianteController->updateOfSolicitudServicio($request,$estudiante);
         $entidadReceptora = new EntidadReceptoraController();
         $jefeInmediato = new JefeInmediatoController();
         $area = new AreaController();
@@ -104,13 +92,13 @@ class SolicitudServicioController extends Controller
         if (isset($estudiante->seguimiento->entidades)) {
             //Obtenemos el modelo que queremos editar y llamamos al metodo en el controller
             $entidadReceptoraModel = $estudiante->seguimiento->entidades->entidad;
-            $entidadReceptora->update($request, $entidadReceptoraModel);
+            $entidadReceptora->updateOfSolicitudServicio($request, $entidadReceptoraModel);
 
             $jefeInmediatoModel = $estudiante->seguimiento->entidades->jefeInmediatos;
-            $jefeInmediato->update($request, $jefeInmediatoModel);
+            $jefeInmediato->updateOfSolicitudServicio($request, $jefeInmediatoModel);
 
             $areaModel = $estudiante->seguimiento->entidades->area;
-            $area->update($request, $areaModel);
+            $area->updateOfSolicitudServicio($request, $areaModel);
             // Envio de correos
             $admin = User::find(1);
             $mensaje = 'Creacion de la solicitud de servicio social';
@@ -142,6 +130,8 @@ class SolicitudServicioController extends Controller
             $admin->notify(new Mensaje($estudiante, $mensaje,'SolicitudServicio'));
         }
 
+
+
         //Creacion del PDF
         //Probablemente se haga un controler exclusivo para pdf's
         $pdf = app('dompdf.wrapper');
@@ -168,6 +158,10 @@ class SolicitudServicioController extends Controller
         $pdf->loadView('pdf.solicitudservicio', $datos);
         //Se descarga el pdf y se regresa a la vista
         return $pdf->download('mi-archivo.pdf');
+
+
+
+
         return view('vistas.alumno.solicitud-servicio', compact('estudiante'));
     }
 

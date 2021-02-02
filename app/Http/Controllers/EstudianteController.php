@@ -8,69 +8,46 @@ use Illuminate\Support\Facades\DB;
 
 class EstudianteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-         //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Estudiante  $estudiante
-     * @return \Illuminate\Http\Response
-     */
     public function show(Estudiante $estudiante)
     {
-        return view('vistas.perfil.show-perfil',compact('estudiante'));
+        return view('vistas.perfil.show-perfil', compact('estudiante'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Estudiante  $estudiante
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Estudiante $estudiante)
+    public function updateOfSolicitudServicio(Request $request, Estudiante $estudiante)
     {
-        //
+        $estudiante->update([
+            'EST_numeroCuenta' => $request->cuentaAlumno,
+            'EST_apellidoPaterno' => $request->apellidoPaternoAlumno,
+            'EST_apellidoMaterno' => $request->apellidoMaternoAlumno,
+            'EST_nombre' => $request->nombreAlumno,
+            'EST_correo' => $request->correoAlumno,
+            'EST_edad' => $request->edadAlumno,
+            'EST_carrera' => $request->carreraAlumno,
+            'EST_porcentajeCreditos' => $request->creditosAlumno,
+            'EST_grupo' => $request->grupoAlumno,
+            'EST_semestre' => $request->semestreAlumno,
+            'EST_domicilio' => $request->domicilioAlumno,
+            'EST_telefono' => $request->telefonoAlumno,
+        ]);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Estudiante  $estudiante
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Estudiante $estudiante)
+    public function updateOfDatosPrestador(Request $request, Estudiante $estudiante)
     {
-        //
+        $estudiante->update([
+            'EST_carrera' => $request->carreraAlumno,
+            'EST_fechaNacimiento' => $request->fechaNacimientoAlumno,
+            'EST_rfc' => $request->rfcAlumno,
+            'EST_curp' => $request->curpAlumno,
+            'EST_semestre' => $request->semestreAlumno,
+            'EST_codigoPostal' => $request->codigoPostalAlumno,
+        ]);
+    }
+    public function updateOfRegistroAutorizacion(Request $request, Estudiante $estudiante)
+    {
+        $estudiante->update([
+            'EST_carrera' => $request->carreraAlumno,
+            'EST_sexo' => $request->sexoAlumno,
+            'EST_promedio' => $request->promedioAlumno,
+        ]);
     }
 
     /**
@@ -114,25 +91,24 @@ class EstudianteController extends Controller
         $prestadors = Estudiante::all();
         //return $estudiantes;
         return view('vistas.admin.constancias-generar', compact('datos', 'users', 'prestadors'));
-        
     }
-    public function pdf(Request $request,$id)
+    public function pdf(Request $request, $id)
     {
-         $users = DB::table('estudiantes')
+        $users = DB::table('estudiantes')
             ->join('seguimientos', 'estudiantes.id', '=', 'seguimientos.estudiante_id')
             ->join('estados', 'seguimientos.id', '=', 'estados.seguimiento_id')
             ->join('entidads', 'seguimientos.entidad_id', '=', 'entidads.id')
             ->join('entidad_receptoras', 'entidads.entidad_receptora_id', '=', 'entidad_receptoras.id')
             ->join('areas', 'entidads.area_id', '=', 'areas.id')
             ->select('estudiantes.id', 'estudiantes.EST_nombre', 'estudiantes.EST_apellidoMaterno', 'estudiantes.EST_apellidoPaterno', 'estudiantes.EST_carrera', 'entidad_receptoras.ENR_programaParticipa', 'areas.ARA_nombre', 'entidad_receptoras.ENR_nombre', 'entidad_receptoras.ENR_municipio', 'entidad_receptoras.ENR_fechaInicio', 'entidad_receptoras.ENR_fechaTermino')
-            ->where('estudiantes.id','=',$id)
-            ->orderBy('estudiantes.id','desc')->take(1)->get();
+            ->where('estudiantes.id', '=', $id)
+            ->orderBy('estudiantes.id', 'desc')->take(1)->get();
 
-            $numalumno=Estudiante::select('EST_numeroCuenta')->where('id',$id)->get();
-        
+        $numalumno = Estudiante::select('EST_numeroCuenta')->where('id', $id)->get();
+
         setlocale(LC_TIME, 'es_MX.UTF-8');
         $fecha = strftime('%d de %B del %G');
-            $pdf = \PDF::loadView('pdf.generarconstancia',['users'=>$users, 'fecha'=>$fecha]);
-        return $pdf->download('users-'.$numalumno[0]->EST_numeroCuenta.'.pdf');
+        $pdf = \PDF::loadView('pdf.generarconstancia', ['users' => $users, 'fecha' => $fecha]);
+        return $pdf->download('users-' . $numalumno[0]->EST_numeroCuenta . '.pdf');
     }
 }

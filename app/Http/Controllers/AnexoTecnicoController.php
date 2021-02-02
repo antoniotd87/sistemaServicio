@@ -75,9 +75,9 @@ class AnexoTecnicoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EntidadReceptora $estudiante)
+    public function update(Request $request, EntidadReceptora $entidadReceptora)
     {
-        $estudiante->update([
+        $entidadReceptora->update([
             'ENR_correo' => $request->correoDependencia,
             'ENR_estimulo' => $request->estimuloDependencia,
         ]);

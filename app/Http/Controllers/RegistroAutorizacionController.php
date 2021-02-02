@@ -87,6 +87,8 @@ class RegistroAutorizacionController extends Controller
             'EST_sexo' => $request->sexoAlumno,
             'EST_promedio' => $request->promedioAlumno,
         ]);
+        $estudianteController = new EstudianteController();
+        $estudianteController->updateOfRegistroAutorizacion($request,$estudiante);
          //Instanciamos a los controladores para poder utilizarlos
         $entidadReceptora = new EntidadReceptoraController();
         $area = new AreaController();
@@ -95,26 +97,7 @@ class RegistroAutorizacionController extends Controller
         if (isset($estudiante->seguimiento->entidades)) {
             //Obtenemos el modelo que queremos editar y llamamos al metodo en el controller
             $entidadReceptoraModel = $estudiante->seguimiento->entidades->entidad;
-            $entidadReceptora->update($request,$entidadReceptoraModel);
-
-            $areaModel = $estudiante->seguimiento->entidades->area;
-            $area->update($request,$areaModel);
-        } else {
-            //Si no hay relaciones, se crean las tablas y se relacionan con el estudiante
-            //Se llama al metodo store de el controlador para poder insertar el registro
-            $idER = $entidadReceptora->store($request);
-
-            $idA = $area->store($request);
-            //Se guardan los id's de los registros anteriores en la tabla entidad
-            //tambien desde su controlador
-            $datos = [
-                'er_id' => $idER,
-                'a_id' => $idA
-            ];
-
-            $idE = $entidad->store($datos);
-            //Se actualiza la tabla seguimiento
-            $estudiante->seguimiento->update(['entidad_id' => $idE]);
+            $entidadReceptora->updateOfRegistroAutorizacion($request,$entidadReceptoraModel);
         }
         //Creacion del PDF
         //Probablemente se haga un controler exclusivo para pdf's

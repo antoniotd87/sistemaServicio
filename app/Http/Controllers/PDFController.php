@@ -37,7 +37,7 @@ class PDFController extends Controller
             'semestre' => $estudiante->EST_semestre,
         ];
         $pdf->loadView('pdf.solicitudservicio', $datos);
-        return $pdf;
+        return $pdf->stream();
     }
     public function datosPrestador(Estudiante $estudiante)
     {
@@ -60,7 +60,7 @@ class PDFController extends Controller
             'fecha' => $fecha,
         ];
         $pdf->loadView('pdf.datosprestador', $datos);
-        return $pdf;
+        return $pdf->stream();
     }
     public function registroAutorizacion(Estudiante $estudiante)
     {
@@ -99,7 +99,7 @@ class PDFController extends Controller
             'horas' => '480',
         ];
         $pdf->loadView('pdf.registroautorizacion', $datos);
-        return $pdf;
+        return $pdf->stream();
     }
     public function anexoTecnico(Estudiante $estudiante)
     {
@@ -127,7 +127,7 @@ class PDFController extends Controller
             'actividades' => 'Falta este dato',
         ];
         $pdf->loadView('pdf.anexotecnico', $datos);
-        return $pdf;
+        return $pdf->stream();
     }
     public function privado1(Estudiante $estudiante)
     {
@@ -158,7 +158,7 @@ class PDFController extends Controller
             'termino' => $estudiante->seguimiento->entidades->entidad->ENR_fechaTermino,
         ];
         $pdf->loadView('pdf.solicitudprivado1', $datos);
-        return $pdf;
+        return $pdf->stream();
     }
     public function privado2(Estudiante $estudiante)
     {
@@ -191,7 +191,7 @@ class PDFController extends Controller
             'estimulo' => 'Falta este dato',
         ];
         $pdf->loadView('pdf.solicitudprivado2', $datos);
-        return $pdf;
+        return $pdf->stream();
     }
     public function privado3(Estudiante $estudiante)
     {
@@ -225,6 +225,6 @@ class PDFController extends Controller
             'estimulo' => 'Falta este dato',
         ];
         $pdf->loadView('pdf.solicitudprivado3', $datos);
-        return $pdf;
+        return $pdf->stream();
     }
 }

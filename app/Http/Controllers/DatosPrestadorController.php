@@ -75,14 +75,8 @@ class DatosPrestadorController extends Controller
      */
     public function update(Request $request, Estudiante $estudiante)
     {
-        $estudiante->update([
-            'EST_carrera' => $request->carreraAlumno,
-            'EST_fechaNacimiento' => $request->fechaNacimientoAlumno,
-            'EST_rfc' => $request->rfcAlumno,
-            'EST_curp' => $request->curpAlumno,
-            'EST_semestre' => $request->semestreAlumno,
-            'EST_codigoPostal' => $request->codigoPostalAlumno,
-        ]);
+        $estudianteController = new EstudianteController();
+        $estudianteController->updateOfDatosPrestador($request,$estudiante);
          //Creacion del PDF
         //Probablemente se haga un controler exclusivo para pdf's
         $pdf = app('dompdf.wrapper');

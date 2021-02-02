@@ -52,7 +52,7 @@ class NotificacionControler extends Controller
                 # code...
                 break;
         }
-        return $pdf->stream();
+        return $pdf;
     }
     public function sendMessage(Request $request, $estudiante)
     {

@@ -7,32 +7,6 @@ use Illuminate\Http\Request;
 
 class JefeInmediatoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $jefeInmediato = new JefeInmediato();
@@ -46,35 +20,14 @@ class JefeInmediatoController extends Controller
         return $idJI;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\JefeInmediato  $jefeInmediato
-     * @return \Illuminate\Http\Response
-     */
-    public function show(JefeInmediato $jefeInmediato)
+    public function updateOfSolicitudServicio(Request $request, JefeInmediato $jefeInmediato)
     {
-        //
+        $jefeInmediato->JEI_nombre = $request->jefeInmediato;
+        $jefeInmediato->JEI_apellidoPaterno = $request->paternoInmediato;
+        $jefeInmediato->JEI_apellidoMaterno = $request->maternoInmediato;
+        $jefeInmediato->JEI_cargo = $request->cargoJefeInmediato;
+        $jefeInmediato->save();
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\JefeInmediato  $jefeInmediato
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(JefeInmediato $jefeInmediato)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\JefeInmediato  $jefeInmediato
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, JefeInmediato $jefeInmediato)
     {
         $jefeInmediato->JEI_nombre = $request->jefeInmediato;
@@ -85,14 +38,4 @@ class JefeInmediatoController extends Controller
         $jefeInmediato->save();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\JefeInmediato  $jefeInmediato
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(JefeInmediato $jefeInmediato)
-    {
-        //
-    }
 }
